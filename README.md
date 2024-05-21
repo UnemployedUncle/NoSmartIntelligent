@@ -1,0 +1,2 @@
+# NoSmartIntelligent
+Routine building repo
