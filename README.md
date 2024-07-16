@@ -1,15 +1,63 @@
 # NoSmartIntelligent
-Transform YouTube videos into interactive English study notes
 
-This repository provides an AI-powered transformation of YouTube videos into engaging English study materials. Simply input a YouTube link, and the app generates a Markdown note containing 15 minutes of repetitive English content for daily speaking practice.
+Transform Youtube into daily English study notes.
 
-### Key Features
-- **Premade Notes to Start**: IBM Technology, StatQuest, 3Blue1Brown, TwoMinutePapers, AI Explained
-- **(TBD) Personalized Study Notes**: Convert your favorite YouTube videos into English learning notes tailored to your routine.
-Modify and adapt the generated notes to fit your personal learning style.
-- **(TBD) Easy to Use**: AI automatically generate high-quality Markdown content for efficient and effective practice.
+## Key Features
 
-### How to use
+- **Premade Notes to Start**: Premade notes which I made during development.
+    - [ ] StatQuest
+    - [ ] 3Blue1Brown
+    - [ ] Deeplearning.ai
+    - [ ] TwoMinutePapers
+    - [ ] AI Explained
+    - [ ] CodeEmporium
+    - [ ] IBM Technology
+    - [ ] ByteByteGo
+
+- **(TBD) Personalized Study Notes**:
+    - Link2Note: AI generate high-quality Markdown content for efficient and effective practice.
+        - [ ] Link2transcript
+        - [ ] Summarization
+        - [ ] rewrite eaily > rewrite base on the level > Question
+    - Personal Study Notes: Just check function that you want to includ inside your personal study notes.
+        - functions / task / knowhow
+            - cehcklist
+            - quiz (rewrite contents to question, thinking points)
+            - fact/source checker
+            - additional readings / study materials(link) / information / reference
+    - Knowhow Sharing: Add functions by sharing your own knowhow.
+
+- **(TBD) Automate & Feedback**: Modify and adapt the generated notes to fit your personal learning style. Share it to the community. (share routine ~ how to study, contents-youtube, ai-prompt engineered?)
+    - [ ] Output Markdown Template 의미 있는 템플릿 생성(사람들이 자주 쓰는 형태 데이터로 축적)
+    - [ ] Versioning 기능, 오답 노트 기능
+Data ~ 모델 학습
+Agent, mass customization(on the shelf)
+
+- [ ] feedback loop
+
+- [ ] Front
+고객 관점부터 시작(How to use eaily?, 기술은 숨어 있으야함)
+Page 1. 매일매일 새로운 것
+Page 2. 어제 본것, Categorize (album), 지금까지 완료한 것 수
+
+- [ ] One page drawing / Architecture drawing
+
+---
+# Development
+git branch
+Figma
+Prompt Engeering
+GPT, Gemini, ...
+LLaMA, Gema
+LangChain, LLaMA Index
+
+## Internal Leaderboard
+GPTs
+
+
+EOS
+
+---
 
 [GPTs](https://chatgpt.com/g/g-bL2ch5Ok8-no-smart-intelligent)
 
@@ -21,7 +69,8 @@ Modify and adapt the generated notes to fit your personal learning style.
 
 ![]()
 
-
+Output example
+https://thisisindexed.com/
 
 ---
 # Study Notes
