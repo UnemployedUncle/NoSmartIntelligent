@@ -4,8 +4,7 @@ Transform Youtube into daily English study notes.
 
 ## Key Features
 
-Contents
-- **(TBD) Premade Notes to Start**
+- **(TBD) Premade Notes to Start** (Contents)
     - [ ] StatQuest
     - [ ] 3Blue1Brown
     - [ ] TwoMinutePapers
@@ -13,68 +12,73 @@ Contents
     - [ ] CodeEmporium
     - [ ] Deeplearning.ai
     - [ ] IBM Technology
+    - AI, Cooking recipe, Vocal training, Sport routines, ...
 
-Model
-- **(TBD) Personalized Study Notes**:
-    - Link2Note: AI generate high-quality Markdown content for efficient and effective practice.
-        - [ ] Link2transcript - link, token, channel?, cache
-            - [ ] Playlist
-            - [ ] Channel
-        - [ ] Summarization
-        - [ ] rewrite eaily
-            - [ ] rewrite base on the level (shelf)
-            - [ ] Personalized level?
-    - Personal Study Notes: Just check function that you want to includ inside your personal study notes.
-        - [ ] functions / task / knowhow
-            - [ ] cehcklist
-            - [ ] Question, quiz (rewrite contents to question, thinking points)
-            - [ ] fact/source checker
-            - [ ] additional readings / study materials(link) / information / reference
+- **(TBD) Personalized Study Notes** (Model)
+    - Automated study note generation
+        - [ ] 1. Link(input) to transcript(output) - Token count, Meta data(channel, author, ...), cache(efficiency)
+            - [ ] 1.1. Video to transcript
+            - [ ] 1.2. Playlist
+            - [ ] 1.3. Channel
+        - [ ] 2. Summarization
+            - [ ] 2.1. Length
+            - [ ] 2.2. Contents checker
+        - [ ] 3. Rewrite
+            - [ ] 3.1. Easy
+            - [ ] 3.2. rewrite base on the level (shelf)
+            - [ ] 3.3. Personalized level?
+        - [ ] 4. Markdown (output)
+            - [ ] 4.2. JSON
 
-Money
-- **(TBD) Automate & Feedback**: Modify and adapt the generated notes to fit your personal learning style. Share it to the community. (share routine ~ how to study, contents-youtube, ai-prompt engineered?)
+    - Personalized study notes: On the shelf (Function checklist) > personalized model (Agent)
+        - [ ] 5. functions / task / knowhow
+            - [ ] 5.1. Basic functions
+            - [ ] 5.2. Daily routine (15 times Checklist)
+            - [ ] 5.3. Question, quiz (rewrite contents to question, thinking points)
+            - [ ] 5.4. Fact/Source/Reference checker
+            - [ ] 5.5. Additional readings / Study materials(link) / Search information / ...
+        - [ ] 6. Agent
+            - [ ] 5.1. Prompt
+            - [ ] 5.2. Fine-tuning
+            - [ ] 6.3. Code generation (Functions)
 
-    - [ ] Output Markdown
-    - [ ] Versioning 기능, 관리 기능, 오답 노트 기능(지식 축적 - 폴더 관리?)
+- **(TBD) Feedback Loop** (Biz)
+    - Knowhow(Routine) Data
+        - Routine Visualization, Routine as template, Level writing...
 
-- [ ] Feedback loop
-How does the routine works?
-Practice new expressions 15 times and
-review the previous day's expressions 15 times.
-Data ~ 모델 학습
-Agent, mass customization(on the shelf)
-Data로의 가치. Template 의미 있는 템플릿 생성(사람들이 자주 쓰는 형태 데이터로 축적), Level writing
-학습에 어떻게 활용?
-루틴과 어떻게 연결?
+    - App
+        - [ ] 7. Front - Album 고객 관점부터 시작(How to use eaily?, 기술은 숨어 있으야함)
+            - [ ] 7.1. Sign in, Log in (Define User data)
+            - Page 1. Gallery - Today new contents (매일매일 새로운 것)
+                - Recommendations, Liked/Stars, ...
+            - Page 2. Routine - Yesterday (어제 본것), Categorized (Folder), 지금까지 완료한 것 수 시각화
+            - Page 3. Atelier - Making new note with functions
+            - Page 4. Making functions, AI, ...
+        - [ ] 8. Album - Categorization (Managing notes, Folder, tree, tags), 오답 노트 기능(지식 축적 - 폴더 관리?)
+        - [ ] 9. Versioning
+
+    - Knowhow(Routine) Sharing - Share your learning, routine, contents, model
+        - [ ] 10. Community
 
 
-- Personalized(User data)
-    - [ ] Sign in, Log in
-    - [ ] Categorization, Tree(?), Tags(?), ...
-
-    - Knowhow Sharing: Add functions by sharing your own knowhow.
-        - [ ] code generation
-
-- [ ] Front - Album 고객 관점부터 시작(How to use eaily?, 기술은 숨어 있으야함)
-    - Page 1. 매일매일 새로운 것
-    - Page 2. 어제 본것, Categorize (album), 지금까지 완료한 것 수
-    - Page 3. Making
-    - Page 4. Functions
 
 ---
-## Development
-on the shelf > Personalization
+## Dev
 git branch
 Figma
 Prompt Engeering
 GPT, Gemini, ...
 LLaMA, Gema
-LangChain, LLaMA Index
+LangChain, LLaMAIndex
+Ollama, LMStudio
 
 ### Internal Leaderboard
 GPTs
+GPT, Gemini, ...
+LLaMA3
+Gema
 
-
+---
 ### Contributions
 Welcome contributions from the community. If you have improvements or new features to share, please submit a pull request.
 
