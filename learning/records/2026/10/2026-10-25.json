@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-10-25",
+  "date": "2026-10-25",
+  "timezone": "Asia/Seoul",
+  "title": "No smart intelligent | 2026-10-25 | Function Calling 복습",
+  "topic": "Function calling — tool request versus authorized execution (Sunday review)",
+  "term": {
+    "en": "Function calling",
+    "abbreviation": null,
+    "ko": "함수 호출(애플리케이션 실행형 도구 호출)",
+    "definition_ko": "모델에 사전에 정의한 함수와 입력 형식을 제공하면, 모델은 작업에 필요한 함수 이름과 인자를 호출 요청으로 생성할 수 있다. 일반적인 애플리케이션 실행형 함수 호출에서는 앱이 요청을 검증하고 함수를 실행하며 결과를 모델에 다시 전달한다.",
+    "distinction_ko": "모델의 도구 호출 제안은 실행 권한이나 승인 자체가 아니다. 제공자 측 내장 도구는 실행 위치가 다를 수 있으므로 이 수업의 정의를 모든 도구 사용 방식에 일반화하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ]
+  },
+  "core_expression": "The model requests a tool call; the application executes it.",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "The model requests a tool call; the application executes it.",
+      "example_en": "In this proposed purchasing assistant, the model requests a tool call, and the application executes the supplier-status lookup.",
+      "translation_ko": "제안하는 구매 보조 시스템에서 모델은 도구 호출을 요청하고 애플리케이션은 공급업체 상태 조회를 실행합니다.",
+      "use_ko": "모델의 요청과 실제 실행 주체를 구분할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Define a tool with clear input parameters",
+      "example_en": "We define a supplier-status function with a supplier ID as its required input.",
+      "translation_ko": "공급업체 ID를 필수 입력값으로 사용하는 상태 조회 함수를 정의합니다.",
+      "use_ko": "도구 명세와 필요한 입력값을 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Pass structured arguments to a function",
+      "example_en": "The model supplies structured arguments so the application can identify the requested supplier.",
+      "translation_ko": "모델은 애플리케이션이 조회 대상 공급업체를 식별할 수 있도록 구조화된 인자를 제공합니다.",
+      "use_ko": "일반 문장과 함수 호출용 입력의 차이를 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Return the tool result to the model",
+      "example_en": "After the lookup finishes, the application returns the tool result to the model.",
+      "translation_ko": "조회가 끝나면 애플리케이션은 도구 결과를 모델에 다시 전달합니다.",
+      "use_ko": "실행 후 반환 데이터의 흐름을 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Use the returned data to draft …",
+      "example_en": "The model uses the returned data to draft a status summary for the buyer.",
+      "translation_ko": "모델은 반환된 데이터를 활용해 구매 담당자에게 제공할 상태 요약 초안을 작성합니다.",
+      "use_ko": "조회 결과와 생성 결과를 연결할 때. 사실 정확성은 별도 확인이 필요.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Restrict the tools available to the model",
+      "example_en": "We restrict the tools available to the model to supplier lookups in this proposed workflow.",
+      "translation_ko": "이 제안 워크플로에서는 모델이 사용할 수 있는 도구를 공급업체 조회로 제한합니다.",
+      "use_ko": "모델에 공개하는 도구 범위와 실제 백엔드 권한의 차이를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executive",
+      "example_en": "The assistant can draft a supplier update from approved lookups, but it cannot change purchase orders unless we build and authorize that action.",
+      "translation_ko": "보조 시스템은 허용된 조회 결과를 활용해 공급업체 현황 초안을 작성할 수 있지만, 별도의 변경 기능과 권한을 설계하지 않는 한 발주서를 변경할 수 없습니다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "The model proposes a function name and arguments; in this design, the backend checks access rights, runs the lookup, and sends the result back.",
+      "translation_ko": "모델이 함수 이름과 인자를 제시하면, 이 설계에서 백엔드는 접근 권한을 확인하고 조회를 실행한 뒤 결과를 다시 전달합니다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 물류 회사. Agent가 선적 상태를 읽을 수는 있지만 납기 변경 기능은 아직 승인되지 않았다. 고객 임원은 왜 조회와 변경을 분리하는지 묻는다.",
+    "question_en": "If the agent can check a shipment's status, why shouldn't it automatically change the delivery date in our system?",
+    "required_expression": "The model requests a tool call; the application executes it.",
+    "optional_expression_ids": [
+      "E4",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장(약 40~70단어 또는 30~45초). E1과 E4 또는 E6 하나를 활용하고, 조회 호출·실행·변경 권한의 차이를 설명한다. 실제 운영 사실이 아닌 제안임을 명시한다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "OpenAI",
+      "authors": null,
+      "title": "Function calling",
+      "url": "https://developers.openai.com/api/docs/guides/function-calling",
+      "type": "official_implementation_guide",
+      "published": null,
+      "updated": null,
+      "accessed_on": "2026-10-25",
+      "supports": "애플리케이션 측 함수 호출에서 모델의 요청·인자와 애플리케이션 실행·결과 반환을 구분하고 도구 선택을 제한할 수 있음을 설명."
+    },
+    {
+      "id": "S2",
+      "organization": "Anthropic Engineering",
+      "authors": null,
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/research/building-effective-agents",
+      "type": "engineering_research_explanation",
+      "published": "2024-12-19",
+      "updated": null,
+      "accessed_on": "2026-10-25",
+      "supports": "사전에 정의된 코드 경로의 workflow와 모델이 도구 사용을 동적으로 결정하는 agent의 범주를 구별."
+    },
+    {
+      "id": "S3",
+      "organization": "Anthropic Frontier Red Team",
+      "authors": null,
+      "title": "Trustworthy agents in practice",
+      "url": "https://www.anthropic.com/research/trustworthy-agents",
+      "type": "research_policy_engineering_explanation",
+      "published": "2026-04-09",
+      "updated": null,
+      "accessed_on": "2026-10-25",
+      "supports": "에이전트의 선택·도구·실행 환경과 사람의 승인·권한 통제를 별도로 설계해야 하는 이유."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "OpenAI 공식 함수 호출 가이드 및 Anthropic Engineering(2024-12-19), Anthropic Frontier Red Team(2026-04-09) 본문을 실제로 확인. 제품별 모든 도구 실행 경로가 아니라 애플리케이션 측 함수 호출 사례로 범위를 제한.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/10/2026-10-25.md"
+}
