@@ -2,6 +2,12 @@
 
 Transform Youtube into daily English study notes.
 
+## Daily Consultant English Archive
+
+**[매일의 AI·데이터·에이전트 영어 학습 자료](learning/README.md)** · **[날짜별 목록](learning/lessons/README.md)**
+
+Microsoft·AWS·Google의 연구 자료를 바탕으로 작성한 학습 카드를 날짜별 Markdown과 재사용용 JSON으로 보관합니다. 기존 ChatGPT 예약 작업의 결과를 연결된 GitHub 도구로 저장하는 방식이며, 기존 개발 계획과 `lab/` 파일은 그대로 유지합니다. 공개 범위와 저장 규칙은 [아카이브 안내](learning/README.md)를 참고하세요.
+
 ## Key Features
 
 - **(TBD) Premade Notes to Start** (Contents)
