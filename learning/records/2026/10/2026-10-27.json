@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-10-27",
+  "date": "2026-10-27",
+  "timezone": "Asia/Seoul",
+  "title": "Predictive Calibration — 예측 신뢰도와 실제 정확도의 일치",
+  "topic": "Predictive calibration — confidence versus observed accuracy",
+  "term": {
+    "en": "Predictive calibration",
+    "abbreviation": null,
+    "ko": "예측 확률 보정(풀이: 신뢰도 점수가 실제 정답 빈도와 부합하는 정도)",
+    "definition_ko": "분류기가 제시하는 신뢰도와 비교 가능한 예측 집합에서 실제로 정답인 비율이 일치하는 성질이다. 예를 들어 80%로 예측된 사례가 충분히 많다면 그중 약 80%가 맞아야 잘 보정된 것이다.",
+    "distinction_ko": "Calibration은 전체 정답률인 accuracy와 다르다. 집단의 빈도가 맞아도 개별 예측이 정답이라는 보장은 없고, 입력 데이터가 달라지면 보정 상태도 변할 수 있다. 자유형식 생성 답변에 분류 확률의 해석을 자동 적용하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Match confidence scores to observed accuracy",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Match confidence scores to observed accuracy",
+      "example_en": "A calibrated classifier assigns confidence scores that match its observed accuracy across comparable predictions.",
+      "translation_ko": "보정된 분류 모델은 비슷한 예측들의 실제 정답 비율과 부합하는 신뢰도 점수를 제시합니다.",
+      "use_ko": "Calibration을 처음 정의할 때. 한 건의 정답을 보장하는 표현은 아닙니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Group predictions by confidence range",
+      "example_en": "We group incoming inquiry classifications by confidence range to assess the reported scores.",
+      "translation_ko": "우리는 접수된 문의 분류 결과를 신뢰도 구간별로 묶어 점수를 평가합니다.",
+      "use_ko": "평가 데이터를 어떻게 묶어 확인하는지 설명할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Compare average confidence with observed accuracy",
+      "example_en": "Within each group, we compare average confidence with the share of correct predictions.",
+      "translation_ko": "각 구간의 평균 신뢰도와 실제로 맞힌 예측의 비율을 비교합니다.",
+      "use_ko": "정확히 무엇을 계산하고 비교하는지 설명할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Adjust confidence estimates without retraining the classifier",
+      "example_en": "A post-processing step can adjust confidence estimates without retraining the underlying classifier.",
+      "translation_ko": "사후 처리 단계에서는 분류 모델 자체를 재학습하지 않고 신뢰도 추정값을 조정할 수 있습니다.",
+      "use_ko": "Platt scaling이나 isotonic regression처럼 예측 후 확률을 보정하는 방식을 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Distinguish accuracy from calibration",
+      "example_en": "Two classifiers may have similar accuracy but different levels of confidence calibration.",
+      "translation_ko": "두 분류 모델은 정확도가 비슷해도 신뢰도 보정 수준은 다를 수 있습니다.",
+      "use_ko": "일반적인 정답률과 확률 점수의 해석 가능성을 구별할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Recheck calibration when the input distribution changes",
+      "example_en": "We recheck calibration when customer inquiries shift toward unfamiliar product categories.",
+      "translation_ko": "고객 문의가 익숙하지 않은 상품군으로 이동하면 신뢰도 보정 상태를 다시 점검합니다.",
+      "use_ko": "실제 운영 데이터 구성이 달라질 때 기존 확률 점수를 그대로 믿지 말라고 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business executives",
+      "example_en": "An 80% confidence score should not be treated as an 80% chance of being correct until we validate it against similar cases.",
+      "translation_ko": "유사 사례의 실제 결과로 검증하기 전에는 신뢰도 80%를 정답 확률 80%로 받아들이면 안 됩니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical teams",
+      "example_en": "We would bucket labeled predictions by confidence and compare mean confidence with empirical accuracy in each bucket.",
+      "translation_ko": "정답 라벨이 있는 예측을 신뢰도별로 나누고 각 구간의 평균 신뢰도와 실제 정확도를 비교하겠습니다.",
+      "source_ids": [
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업이 부품 불량 분류 모델을 검토한다. 일부 예측의 신뢰도 점수가 90%로 표시되지만 해당 점수가 실제 정답률과 일치하는지 검증하지 않았다. 고객은 부품을 자동 반려해도 되는지 묻는다.",
+    "question_en": "Our quality-inspection model flags some components as defective with 90% confidence. Is that enough to reject them automatically?",
+    "required_expression": "Match confidence scores to observed accuracy",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 E1과 선택 E3 또는 E6 중 하나만 활용해 calibration의 의미, 검증 방법이나 운영 데이터 변화의 한계, 자동 반려 결정에 대한 주의점을 설명한다. 가상 시스템임을 명확히 하고 수치를 만들어내지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Microsoft Research",
+      "authors": [
+        "Besmira Nushi",
+        "Saleema Amershi",
+        "Ece Kamar",
+        "Gagan Bansal",
+        "Dan Weld",
+        "Mihaela Vorvoreanu",
+        "Eric Horvitz"
+      ],
+      "title": "How to build effective human-AI interaction: Considerations for machine learning and software engineering",
+      "url": "https://www.microsoft.com/en-us/research/articles/how-to-build-effective-human-ai-interaction-considerations-for-machine-learning-and-software-engineering/",
+      "type": "official research-to-practice engineering article and design guidance",
+      "published": "2020-02-07",
+      "updated": null,
+      "accessed_on": "2026-10-27",
+      "supports": "Calibration of confidence against error frequency, post-hoc methods, domain-shift cautions, and practical user-facing communication."
+    },
+    {
+      "id": "S2",
+      "organization": "Google Research",
+      "authors": [
+        "Becca Roelofs",
+        "Nick Cain",
+        "Jon Shlens",
+        "Michael Mozer"
+      ],
+      "title": "Mitigating bias in calibration error estimation",
+      "url": "https://research.google/pubs/mitigating-bias-in-calibration-error-estimation/",
+      "type": "AISTATS 2022 research publication abstract",
+      "published": null,
+      "updated": null,
+      "accessed_on": "2026-10-27",
+      "supports": "Compares mean confidence with observed accuracy within confidence groups; cautions that estimation of calibration error can itself be biased. Year confirmed: 2022."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-10-27 기준 Microsoft Research의 실무 연구 해설과 Google Research의 AISTATS 2022 발표 논문 소개 및 전체 공개 초록 본문을 직접 열어 confidence/accuracy 비교의 정의와 한계를 확인했다. Google 문서는 원 논문 전문이 아닌 공개 초록만 확인했으므로 그 논문의 새로운 실험 결과는 서술하지 않았다.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/10/2026-10-27.md"
+}

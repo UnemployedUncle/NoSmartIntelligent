@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-10-26",
+  "last_lesson_date": "2026-10-27",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-10-27",
+      "date": "2026-10-27",
+      "topic": "Predictive calibration — confidence versus observed accuracy",
+      "core_expression": "Match confidence scores to observed accuracy",
+      "primary_source": "Microsoft Research",
+      "markdown_path": "learning/lessons/2026/10/2026-10-27.md",
+      "record_path": "learning/records/2026/10/2026-10-27.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-10-26",
       "date": "2026-10-26",
