@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-10-28",
+  "date": "2026-10-28",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.10.28 — Key-Value Cache (KV cache)",
+  "topic": "Key-value cache (KV cache) — reusing attention states during decoding",
+  "term": {
+    "en": "Key-Value Cache",
+    "abbreviation": "KV cache",
+    "ko": "키·값 캐시",
+    "definition_ko": "자기회귀 방식의 인과적 어텐션 Transformer에서는 다음 토큰을 생성할 때 이전 토큰의 key와 value를 참조한다. KV 캐시는 이전 토큰의 키·값 벡터를 추론 중 저장해 재사용하는 중간 상태로, 계산의 반복을 줄이는 대신 메모리 용량과 대역폭을 사용한다.",
+    "distinction_ko": "KV 캐시는 추론 중간 계산 상태이지 문서의 영구 저장소나 장기 학습 메모리가 아니다. 요청 간 재사용 여부는 서빙 구현·보존 정책에 따라 다르다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Reuse cached key and value vectors instead of recomputing them",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Reuse cached key and value vectors instead of recomputing them",
+      "example_en": "A KV cache lets the model reuse key and value vectors from earlier tokens instead of recomputing them at each generation step.",
+      "translation_ko": "KV 캐시는 새 토큰을 생성할 때 이전 토큰의 키·값 벡터를 매번 다시 계산하지 않고 재사용하게 합니다.",
+      "use_ko": "KV 캐시의 핵심 작동 원리를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Build the cache while processing the input prompt",
+      "example_en": "During prefill, the model computes key and value vectors for the input tokens and stores them in the cache.",
+      "translation_ko": "Prefill 단계에서 모델은 입력 토큰의 키·값 벡터를 계산해 캐시에 저장합니다.",
+      "use_ko": "입력 프롬프트 처리 과정 설명.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Read and extend the cache during decoding",
+      "example_en": "During decoding, the model reads cached vectors and adds the new token's key and value vectors.",
+      "translation_ko": "디코딩 중 모델은 저장된 벡터를 읽고 새 토큰의 키·값 벡터를 추가합니다.",
+      "use_ko": "생성 단계의 캐시 활용 설명.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Avoid repeating work across decoding steps",
+      "example_en": "Reusing the cache avoids calculating the same past-token projections for every new token.",
+      "translation_ko": "캐시 재사용으로 새 토큰마다 과거 토큰의 동일한 투영 계산을 반복하지 않습니다.",
+      "use_ko": "반복 계산 감소 메커니즘 설명.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Trade extra memory for less repeated computation",
+      "example_en": "KV caching trades memory capacity and bandwidth for less repeated attention computation.",
+      "translation_ko": "KV 캐싱은 반복 계산을 줄이는 대신 메모리 용량과 대역폭을 사용합니다.",
+      "use_ko": "성능과 자원의 절충 관계를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Track memory use as context length grows",
+      "example_en": "In the proposed service, we would track GPU memory usage as prompts and generated outputs get longer.",
+      "translation_ko": "제안하는 서비스에서는 프롬프트와 생성 출력이 길어짐에 따라 GPU 메모리 사용량을 추적하겠습니다.",
+      "use_ko": "운영 평가 설계 제안.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business",
+      "example_en": "Reusing earlier calculations may help the assistant respond faster, but longer prompts can require more GPU memory.",
+      "translation_ko": "이전 계산을 재사용하면 응답이 빨라질 수 있지만, 긴 프롬프트는 GPU 메모리를 더 많이 요구할 수 있습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical",
+      "example_en": "For this causal Transformer design, prefill builds the initial KV cache, and each decoding step reads the saved states and appends new ones.",
+      "translation_ko": "이 인과적 어텐션 Transformer 설계에서는 prefill이 초기 KV 캐시를 만들고 디코딩 단계마다 저장된 상태를 읽어 새 상태를 추가합니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 보험사 법무팀이 긴 보험약관을 요약하는 LLM 서비스를 검토합니다. 담당자는 KV 캐시가 문서를 계속 기억하는 저장소인지, 어떤 자원 비용이 있는지 묻습니다.",
+    "question_en": "We want to summarize lengthy policy documents. Does a KV cache mean the assistant permanently remembers those documents, and what trade-off does it introduce?",
+    "required_expression": "Reuse cached key and value vectors instead of recomputing them",
+    "optional_expression_ids": [
+      "E3",
+      "E5"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 필수 표현과 선택 표현 하나를 사용하고, 계산 상태와 장기 기억의 차이, 자원 절충 관계를 설명하세요."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "AWS",
+      "authors": [
+        "Vivek Gangasani",
+        "Andrew Smith",
+        "Goutham Annem"
+      ],
+      "title": "Introducing Disaggregated Inference on AWS powered by llm-d",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-disaggregated-inference-on-aws-powered-by-llm-d/",
+      "type": "official engineering blog / architecture explanation",
+      "published": "2026-03-16",
+      "updated": null,
+      "accessed_on": "2026-10-28",
+      "supports": "Prefill prepares KV cache and decode sequentially generates tokens while reading growing states."
+    },
+    {
+      "id": "S2",
+      "organization": "NVIDIA",
+      "authors": [
+        "John Thomson",
+        "Anjali Shah",
+        "Laikh Tewari"
+      ],
+      "title": "Introducing New KV Cache Reuse Optimizations in NVIDIA TensorRT-LLM",
+      "url": "https://developer.nvidia.com/blog/introducing-new-kv-cache-reuse-optimizations-in-nvidia-tensorrt-llm/",
+      "type": "official engineering blog / implementation explanation",
+      "published": "2025-01-16",
+      "updated": null,
+      "accessed_on": "2026-10-28",
+      "supports": "Caching earlier token key/value states avoids repeated computation at increased memory cost."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "NVIDIA 2025-01-16의 저자 작성 본문과 AWS 2026-03-16 본문을 직접 확인했다. 모델 구조는 인과적 어텐션 Transformer를 가정하며 벤치마크 성능 수치는 주장하지 않는다.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/10/2026-10-28.md"
+}

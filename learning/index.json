@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-10-27",
+  "last_lesson_date": "2026-10-28",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-10-28",
+      "date": "2026-10-28",
+      "topic": "Key-value cache (KV cache) — reusing attention states during decoding",
+      "core_expression": "Reuse cached key and value vectors instead of recomputing them",
+      "primary_source": "AWS",
+      "markdown_path": "learning/lessons/2026/10/2026-10-28.md",
+      "record_path": "learning/records/2026/10/2026-10-28.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-10-27",
       "date": "2026-10-27",
