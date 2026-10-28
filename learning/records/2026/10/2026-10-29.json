@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-10-29",
+  "date": "2026-10-29",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.10.29 (목) — Re-ranking",
+  "topic": "Re-ranking — second-stage relevance ordering of retrieved passages",
+  "term": {
+    "en": "Re-ranking",
+    "abbreviation": null,
+    "ko": "재순위화(풀이: 검색 후보의 순서를 다시 매기는 기법)",
+    "definition_ko": "첫 검색이 찾아낸 후보 문서·문단을 사용자 질문과의 관련성에 따라 다시 평가하고 순서를 바꾸는 두 번째 검색 단계다. 초기 후보에 없는 자료를 새로 찾는 단계는 아니다.",
+    "distinction_ko": "재순위화는 기존 검색 후보의 순서를 변경한다. 처음 검색에서 누락된 문서는 일반적으로 회복할 수 없고, 높은 관련성 점수가 사실 정확성을 보장하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ]
+  },
+  "core_expression": "Re-rank retrieved passages by their relevance to the question",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Re-rank retrieved passages by their relevance to the question",
+      "example_en": "A reranker scores passages already found by the retriever and reorders them by relevance to the user's question.",
+      "translation_ko": "재순위화 모델은 앞단 검색기가 찾아낸 문단에 질문 관련성 점수를 매겨 순서를 다시 정합니다.",
+      "use_ko": "재순위화의 정의와 입력 범위를 소개할 때.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Retrieve a candidate set before reranking",
+      "example_en": "The first-stage retriever gathers candidate passages through keyword or vector search before reranking begins.",
+      "translation_ko": "재순위화 전에 첫 검색 단계가 키워드 또는 벡터 검색으로 후보 문단을 모읍니다.",
+      "use_ko": "검색 파이프라인의 두 단계를 구분할 때.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Score each question–passage pair for relevance",
+      "example_en": "The reranking model scores each question–passage pair instead of relying only on the initial search score.",
+      "translation_ko": "재순위화 모델은 최초 검색 점수에만 의존하지 않고 질문과 문단의 짝마다 관련성을 평가합니다.",
+      "use_ko": "관련성 점수가 어떻게 다시 계산되는지 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Promote stronger matches to the top",
+      "example_en": "A passage that closely addresses the question may move above one that merely shares the same keywords.",
+      "translation_ko": "질문의 핵심을 다루는 문단이 단지 같은 키워드를 포함한 문단보다 위로 올라갈 수 있습니다.",
+      "use_ko": "재순위화가 결과 순서에 미치는 영향을 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Pass the highest-ranked passages to the generator",
+      "example_en": "In the proposed contract assistant, we would pass a small set of top-ranked passages to the language model.",
+      "translation_ko": "가상의 계약 검토 보조 시스템에서는 순위가 높은 소수의 문단을 언어 모델에 전달하겠습니다.",
+      "use_ko": "검색 결과를 생성 단계의 문맥으로 연결할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Measure relevance against added latency",
+      "example_en": "We would measure whether the ranking improvement justifies the extra processing time before deployment.",
+      "translation_ko": "배포 전에 순위 품질의 개선이 추가 처리 시간을 감수할 만한지 측정하겠습니다.",
+      "use_ko": "운영 도입의 성능·시간 절충 관계를 설명할 때.",
+      "source_ids": [
+        "S3"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business",
+      "example_en": "Reranking can move more relevant contract clauses higher, but it cannot recover a clause the first search never found.",
+      "translation_ko": "재순위화는 더 관련 있는 계약 조항을 상위에 배치할 수 있지만, 첫 검색에서 놓친 조항을 새로 찾아내지는 못합니다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    },
+    {
+      "audience": "technical",
+      "example_en": "We would retrieve candidate passages, score each query–passage pair, and send a small reranked set to the generator.",
+      "translation_ko": "후보 문단을 검색한 다음 질문·문단 쌍마다 점수를 산정하고, 재정렬한 일부 문단을 생성 모델에 전달하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업이 설비 고장 이력과 정비 보고서를 검색하는 AI를 검토합니다. 담당자는 기존 검색과 재순위화의 차이 및 초기 검색에서 누락된 자료를 재순위화가 찾을 수 있는지 묻습니다.",
+    "question_en": "If our maintenance assistant already searches incident reports, what does reranking add, and can it recover a report the first search missed?",
+    "required_expression": "Re-rank retrieved passages by their relevance to the question",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초로 답하세요. 핵심 표현과 E3/E6 중 하나만 사용하고, 후보 검색 이후의 재순위화 과정과 처음 검색에서 빠진 문서를 찾지 못한다는 한계를 설명하세요."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "NVIDIA",
+      "authors": [
+        "Amit Bleiweiss"
+      ],
+      "title": "Enhancing RAG Pipelines with Re-Ranking",
+      "url": "https://developer.nvidia.com/blog/enhancing-rag-pipelines-with-re-ranking/",
+      "type": "official technical/engineering blog; implementation explanation",
+      "published": "2024-07-30",
+      "updated": null,
+      "accessed_on": "2026-10-29",
+      "supports": "Fast first-stage retrieval of passages followed by relevance scoring and reordering; a reranker can select a smaller set for RAG."
+    },
+    {
+      "id": "S2",
+      "organization": "Microsoft Research",
+      "authors": [
+        "Rangan Majumder",
+        "Alec Berntson",
+        "Daxin Jiang",
+        "Jianfeng Gao",
+        "Furu Wei",
+        "Nan Duan"
+      ],
+      "title": "The science behind semantic search: How AI from Bing is powering Azure Cognitive Search",
+      "url": "https://www.microsoft.com/en-us/research/blog/the-science-behind-semantic-search-how-ai-from-bing-is-powering-azure-cognitive-search/",
+      "type": "official research/engineering blog",
+      "published": "2021-03-02",
+      "updated": null,
+      "accessed_on": "2026-10-29",
+      "supports": "Transformer-based semantic ranking can reorder results based on semantic meaning beyond keywords; study reports historical, scoped evaluation."
+    },
+    {
+      "id": "S3",
+      "organization": "Microsoft Learn / Azure AI Search",
+      "authors": null,
+      "title": "Semantic ranking in Azure AI Search",
+      "url": "https://learn.microsoft.com/en-us/azure/search/semantic-search-overview",
+      "type": "official product implementation explanation",
+      "published": null,
+      "updated": "2026-08-05",
+      "accessed_on": "2026-10-29",
+      "supports": "Semantic ranker reranks an already retrieved candidate set, not the entire corpus; processing cost and candidate limitation."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "NVIDIA 2024-07-30 저자 본문, Microsoft Research 2021-03-02 연구/엔지니어링 본문, Microsoft Learn 공식 구현 문서(2026-08-05 수정 표시)를 직접 확인함. 자료의 특정 제품 동작과 보편적 재순위화 개념을 구분했고 성능 향상을 보장하지 않음.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/10/2026-10-29.md"
+}
