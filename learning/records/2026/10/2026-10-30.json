@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-10-30",
+  "date": "2026-10-30",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.10.30 (금) — Context Engineering",
+  "topic": "Context engineering — curating task-relevant information across agent steps",
+  "term": {
+    "en": "Context engineering",
+    "abbreviation": null,
+    "ko": "문맥 엔지니어링(풀이: 추론 단계별 입력 정보의 선정·유지 설계)",
+    "definition_ko": "Anthropic이 설명한 실무적 의미에서 모델 추론 단계에 투입할 지시문, 도구 결과, 검색 자료 및 대화 이력 등을 목적에 맞게 선별·갱신·유지하는 설계 활동이다. 단일 학술 표준 정의로 단정하지 않는다.",
+    "distinction_ko": "프롬프트 엔지니어링은 주로 지시문의 구성과 표현에 초점을 두는 반면 문맥 엔지니어링은 도구·자료·기록 등 추론 입력 전체를 다룬다. 많은 문맥이 항상 더 낫거나 모델 파라미터를 학습시키는 것은 아니다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Select and maintain task-relevant context",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Select and maintain task-relevant context",
+      "example_en": "Context engineering means selecting and maintaining the information an AI agent needs for each inference step.",
+      "translation_ko": "문맥 엔지니어링은 AI 에이전트가 각 추론 단계에 필요한 정보를 선정하고 유지하는 설계 활동입니다.",
+      "use_ko": "개념을 처음 정의할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Distinguish instructions from supporting context",
+      "example_en": "Instructions define the task, while supporting context provides the records and definitions needed to carry it out.",
+      "translation_ko": "지시문은 수행할 일을 정하고, 보조 문맥은 이를 수행하는 데 필요한 기록과 정의를 제공합니다.",
+      "use_ko": "프롬프트 작성과 문맥 구성의 역할을 구분할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Re-rank retrieved passages before adding them to context",
+      "example_en": "In the proposed assistant, we re-rank retrieved passages by their relevance to the question before adding the top results to context.",
+      "translation_ko": "제안하는 보조 시스템에서는 검색한 문단을 질문 관련성에 따라 재순위화한 뒤 상위 결과를 문맥에 추가합니다.",
+      "use_ko": "어제 배운 재순위화와 문맥 선정을 연결할 때(가상 설계).",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Retrieve information only when it is needed",
+      "example_en": "Instead of loading every policy document upfront, the proposed agent retrieves specific sections when the task requires them.",
+      "translation_ko": "제안하는 에이전트는 모든 정책 문서를 미리 넣는 대신 업무에 필요한 시점에 해당 부분을 검색합니다.",
+      "use_ko": "Just-in-time retrieval 방식과 입력 문맥의 양을 조절할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Supply business definitions alongside schema metadata",
+      "example_en": "For the proposed reporting agent, we supply business definitions and table lineage alongside column names.",
+      "translation_ko": "제안하는 보고서 에이전트에는 컬럼명뿐 아니라 업무 정의와 테이블 계보도 제공합니다.",
+      "use_ko": "정형 데이터의 기술적 구조와 업무 의미를 함께 제공할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Compact long histories while preserving key decisions",
+      "example_en": "For longer workflows, we can compact previous messages while trying to preserve key decisions and unresolved issues.",
+      "translation_ko": "긴 업무 흐름에서는 핵심 의사결정과 미해결 사항을 유지하도록 시도하면서 이전 메시지를 압축할 수 있습니다.",
+      "use_ko": "긴 에이전트 작업의 문맥 관리와 압축 손실 위험을 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business",
+      "example_en": "More documents do not automatically mean better answers; the assistant needs the right clauses and business definitions for the question.",
+      "translation_ko": "문서를 더 많이 넣는다고 답이 자동으로 좋아지는 것은 아니며, 질문에 맞는 조항과 업무 정의가 필요합니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical",
+      "example_en": "At each step, we would select authorized records, retrieve missing details on demand, and verify that compaction has not dropped critical constraints.",
+      "translation_ko": "각 단계에서 허용된 자료를 선별하고 부족한 정보를 필요할 때 조회하며, 문맥 압축이 중요한 제약을 누락하지 않았는지 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업은 설비 정비 매뉴얼과 사고 보고서 수천 건을 다루는 Agent를 검토하고 있습니다. 기술 책임자가 모든 문서를 매번 프롬프트에 넣는 방식의 문제를 질문합니다.",
+    "question_en": "Our maintenance agent has thousands of manuals and incident reports. Why shouldn't we load everything into every prompt, and how would you avoid losing critical exceptions?",
+    "required_expression": "Select and maintain task-relevant context",
+    "optional_expression_ids": [
+      "E4",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현과 E4 또는 E6 중 하나를 상황에 맞게 변형해 사용. 필요한 정보의 선택과 중요한 예외의 보존 또는 검증을 설명하며 성과를 보장하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Anthropic",
+      "authors": "Anthropic Engineering",
+      "title": "Effective context engineering for AI agents",
+      "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents",
+      "type": "official engineering guidance",
+      "published": "2025-09-29",
+      "updated": null,
+      "accessed_on": "2026-10-30",
+      "supports": "Inference-time context selection and maintenance, prompt-versus-context distinction, just-in-time retrieval, compaction and its loss risks."
+    },
+    {
+      "id": "S2",
+      "organization": "OpenAI",
+      "authors": "Bonnie Xu, Aravind Suresh, Emma Tang",
+      "title": "Inside OpenAI’s in-house data agent",
+      "url": "https://openai.com/index/inside-our-in-house-data-agent/",
+      "type": "official engineering implementation description",
+      "published": "2026-01-29",
+      "updated": null,
+      "accessed_on": "2026-10-30",
+      "supports": "Implementation using schema metadata, data lineage, human annotations, scoped institutional knowledge, and selective runtime retrieval."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-10-30에 Anthropic 엔지니어링 글과 OpenAI 엔지니어링 구현 글의 관련 본문을 직접 열어 확인. 기업 실무 정의·권장사항과 구현 사례를 학술적 보편 정의·실험 결과와 구분함.",
+  "review_of": [
+    "nsi-2026-10-29"
+  ],
+  "lesson_path": "learning/lessons/2026/10/2026-10-30.md"
+}
