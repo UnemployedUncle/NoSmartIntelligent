@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-10-31",
+  "date": "2026-10-31",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026-10-31 (토) — Knowledge Distillation",
+  "topic": "Knowledge distillation — teacher-guided training of a smaller model",
+  "term": {
+    "en": "Knowledge Distillation",
+    "abbreviation": "KD",
+    "ko": "지식 증류",
+    "definition_ko": "교사 모델의 예측·출력 분포·설명 등 지도 신호를 활용해 학생 모델의 파라미터를 학습시키는 기법. 특정 업무의 성능을 유지하면서 운영 가능한 더 작은 모델을 얻는 것을 목표로 하나 동일 성능을 보장하지 않는다.",
+    "distinction_ko": "추론 입력을 구성하는 Context Engineering과 달리 학생 모델의 파라미터가 학습 과정에서 바뀐다. 라벨 기반·로짓 기반·설명 기반 증류를 같은 구현으로 혼동하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Train a smaller student model using guidance from a larger teacher",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Train a smaller student model using guidance from a larger teacher",
+      "example_en": "Knowledge distillation trains a smaller student model using guidance such as predictions from a larger teacher model.",
+      "translation_ko": "지식 증류는 더 큰 교사 모델의 예측 등 지도 신호를 활용해 작은 학생 모델을 훈련하는 기법입니다.",
+      "use_ko": "기술의 정확한 기본 정의를 제시할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Use teacher-generated labels as training targets",
+      "example_en": "In the proposed inquiry classifier, we would use teacher-generated labels as training targets for a smaller model.",
+      "translation_ko": "제안하는 문의 분류 시스템에서는 큰 모델이 만든 라벨을 작은 모델의 학습 목표로 활용하겠습니다.",
+      "use_ko": "교사 모델의 응답을 데이터로 사용하는 증류 방식을 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Provide rationales as additional supervision",
+      "example_en": "Google's distilling step-by-step method uses generated rationales as an additional training task alongside label prediction.",
+      "translation_ko": "Google의 단계별 증류 방법은 생성된 근거 설명을 라벨 예측과 병행하는 추가 학습 과제로 활용합니다.",
+      "use_ko": "최종 라벨 외에 자연어 설명을 학습 신호로 사용하는 특정 연구 방법을 소개할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Train the student to match the teacher's logits",
+      "example_en": "In NVIDIA's logit-based method, the student is trained to match the teacher's output logits on training examples.",
+      "translation_ko": "NVIDIA의 로짓 기반 방법에서는 학습 사례에 대한 교사 모델의 출력 로짓을 학생 모델이 맞추도록 훈련합니다.",
+      "use_ko": "단순 라벨 학습과 로짓 기반 증류의 차이를 기술팀에 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Combine distillation loss with supervised loss",
+      "example_en": "The NVIDIA training objective combines a teacher-matching distillation loss with a supervised fine-tuning loss.",
+      "translation_ko": "NVIDIA의 학습 목적함수는 교사 모델을 모사하는 증류 손실과 지도 미세조정 손실을 결합합니다.",
+      "use_ko": "여러 학습 신호를 결합하는 설계 근거를 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Compare task quality against deployment cost",
+      "example_en": "Before deployment, we would compare the student's task accuracy, response latency, and serving cost with those of the larger model.",
+      "translation_ko": "배포 전 작은 모델의 업무 정확도·응답 지연·서빙 비용을 큰 모델과 비교하겠습니다.",
+      "use_ko": "증류 모델 도입의 효과를 검증할 계획을 제안할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business executives",
+      "example_en": "A smaller specialist model could reduce serving costs for routine document tagging, but we would validate its decisions before rollout.",
+      "translation_ko": "작은 전문 모델은 반복적인 문서 분류의 서빙 비용을 줄일 수 있지만, 도입 전에 판단 품질을 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical teams",
+      "example_en": "We would train the student with approved teacher outputs, then benchmark it on held-out cases against the teacher and a non-distilled baseline.",
+      "translation_ko": "검토된 교사 모델 출력으로 학생 모델을 훈련한 뒤, 별도 평가 사례에서 교사 모델 및 증류하지 않은 기준 모델과 비교하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 물류 회사가 선적 문서를 자동 분류하는 대형 모델을 사용 중이다. 작은 모델로 교체해 비용을 절감하려 하지만 품질 유지 여부는 검증되지 않았다.",
+    "question_en": "If we distill our large shipment-document classifier into a smaller model, will the smaller one be just as accurate, and how should we check whether the cost savings are worth it?",
+    "required_expression": "Train a smaller student model using guidance from a larger teacher",
+    "optional_expression_ids": [
+      "E2",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 40~70단어 또는 30~45초. 필수 표현 1개와 E2 또는 E6 중 1개만 사용해 교사·학생의 역할, 학습과 평가의 차이, 성능이 보장되지 않는다는 점을 설명한다. 개인 답변·모범답안은 공개 저장하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "NVIDIA",
+      "authors": [
+        "Anna Shors",
+        "Sharath Sreenivas",
+        "Shengyang Sun",
+        "Terry Kong"
+      ],
+      "title": "Data-Efficient Knowledge Distillation for Supervised Fine-Tuning with NVIDIA NeMo-Aligner",
+      "url": "https://developer.nvidia.com/blog/data-efficient-knowledge-distillation-for-supervised-fine-tuning-with-nvidia-nemo-aligner/",
+      "type": "official engineering blog",
+      "published": "2024-12-17",
+      "updated": null,
+      "accessed_on": "2026-10-31",
+      "supports": "Teacher/student training, teacher-generated data versus logit matching, combining distillation and supervised training losses; implementation-specific trade-offs."
+    },
+    {
+      "id": "S2",
+      "organization": "Google Research",
+      "authors": [
+        "Cheng-Yu Hsieh",
+        "Chen-Yu Lee"
+      ],
+      "title": "Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes",
+      "url": "https://research.google/blog/distilling-step-by-step-outperforming-larger-language-models-with-less-training-data-and-smaller-model-sizes/",
+      "type": "research blog explaining ACL 2023 paper",
+      "published": "2023-09-21",
+      "updated": null,
+      "accessed_on": "2026-10-31",
+      "supports": "Label-based distillation, rationale-based additional supervision, task-specific student training and bounded benchmark evidence."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "Read the substantive author-written bodies of NVIDIA's 2024 engineering article and Google Research's 2023 blog (not the automated summaries). Claims are limited to descriptions and specific methods, without extrapolating benchmark gains.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/10/2026-10-31.md"
+}

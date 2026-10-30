@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-10-30",
+  "last_lesson_date": "2026-10-31",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-10-31",
+      "date": "2026-10-31",
+      "topic": "Knowledge distillation — teacher-guided training of a smaller model",
+      "core_expression": "Train a smaller student model using guidance from a larger teacher",
+      "primary_source": "NVIDIA",
+      "markdown_path": "learning/lessons/2026/10/2026-10-31.md",
+      "record_path": "learning/records/2026/10/2026-10-31.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-10-30",
       "date": "2026-10-30",
