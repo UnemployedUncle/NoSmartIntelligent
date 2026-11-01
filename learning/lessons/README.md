@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-02 | Outcome-based agent evaluation — verifying real task completion | Verify the final state, not just the agent's claim | Anthropic Engineering | [학습 카드](2026/11/2026-11-02.md) | [JSON](../records/2026/11/2026-11-02.json) |
 | 2026-11-01 | Knowledge distillation — Sunday review of teacher-guided student training | Train a smaller student model using guidance from a larger teacher | NVIDIA | [학습 카드](2026/11/2026-11-01.md) | [JSON](../records/2026/11/2026-11-01.json) |
 | 2026-10-31 | Knowledge distillation — teacher-guided training of a smaller model | Train a smaller student model using guidance from a larger teacher | NVIDIA | [학습 카드](2026/10/2026-10-31.md) | [JSON](../records/2026/10/2026-10-31.json) |
 | 2026-10-30 | Context engineering — curating task-relevant information across agent steps | Select and maintain task-relevant context | Anthropic | [학습 카드](2026/10/2026-10-30.md) | [JSON](../records/2026/10/2026-10-30.json) |

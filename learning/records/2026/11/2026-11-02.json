@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-02",
+  "date": "2026-11-02",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.02 (월) — Outcome-based Agent Evaluation",
+  "topic": "Outcome-based agent evaluation — verifying real task completion",
+  "term": {
+    "en": "Outcome-based Agent Evaluation",
+    "abbreviation": null,
+    "ko": "결과 기반 에이전트 평가(풀이)",
+    "definition_ko": "에이전트가 작업을 끝냈다고 보고했는지보다, 평가 환경에 요구한 최종 상태가 실제로 만들어졌는지를 성공 기준으로 판단하는 평가 접근이다. 특정 단일 점수나 제품명이 아니라 에이전트 평가 설계에서 사용하는 접근이며, 필요하면 행동 제약과 사용자 경험도 함께 검사한다.",
+    "distinction_ko": "실행 기록(trace)은 도구 호출·중간 결과 등의 경로를 보여주고 결과(outcome)는 종료 시점 환경의 실제 상태를 뜻한다. 결과 검증만으로 보안 제약 준수나 응답 품질 전체가 입증되지는 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Verify the final state, not just the agent's claim",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Verify the final state, not just the agent's claim",
+      "example_en": "Outcome-based agent evaluation checks whether the required final state was reached, not just whether the agent claimed success.",
+      "translation_ko": "결과 기반 에이전트 평가는 에이전트가 성공했다고 말했는지가 아니라 필요한 최종 상태가 실제로 달성되었는지를 확인합니다.",
+      "use_ko": "평가의 목적을 정의할 때. 최종 답변과 실제 업무 결과를 구분합니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Define observable success criteria before a trial",
+      "example_en": "For the proposed invoice assistant, we would define success as a correctly saved draft with the expected supplier and fields.",
+      "translation_ko": "제안하는 청구서 보조 시스템에서는 예상한 공급업체와 필드가 맞는 초안이 실제 저장된 상태를 성공으로 정의하겠습니다.",
+      "use_ko": "테스트 시작 전에 합격 기준을 구체화할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Check the system record against the requested action",
+      "example_en": "After a simulated invoice update, the grader checks the stored record against the requested status and values.",
+      "translation_ko": "모의 청구서 갱신 후 평가기는 저장된 기록의 상태와 값이 요청 내용에 부합하는지 확인합니다.",
+      "use_ko": "실제 시스템 상태를 검증하는 평가기를 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Inspect the trace to diagnose a failed outcome",
+      "example_en": "If the expected draft is missing, we inspect the trace to locate a failed tool call or an incorrect argument.",
+      "translation_ko": "예상한 초안이 없다면 도구 호출 실패나 잘못된 인자를 찾기 위해 실행 기록을 점검합니다.",
+      "use_ko": "실패 원인을 분석할 때 결과와 실행 이력을 연결합니다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Allow different valid paths to the same outcome",
+      "example_en": "We should allow different valid tool sequences to pass when they produce the required result without violating constraints.",
+      "translation_ko": "제약 조건을 어기지 않고 필요한 결과를 만든다면 도구 사용 순서가 달라도 통과하도록 해야 합니다.",
+      "use_ko": "특정 도구 순서를 과도하게 강제하는 평가의 문제를 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Combine outcome checks with process safeguards",
+      "example_en": "In the proposed workflow, we would verify the saved invoice and check that no unauthorized action was attempted.",
+      "translation_ko": "제안하는 워크플로에서는 청구서 저장 여부를 검증하고 승인되지 않은 행동을 시도하지 않았는지도 확인하겠습니다.",
+      "use_ko": "최종 결과와 필수 보안·승인 제약을 동시에 평가할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business executives",
+      "example_en": "An agent saying an invoice was created is not proof; we would confirm the record in the system before counting the task as complete.",
+      "translation_ko": "에이전트가 청구서를 만들었다고 말하는 것만으로는 충분하지 않습니다. 실제 시스템 기록을 확인한 뒤 업무 완료로 판정하겠습니다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "audience": "technical teams",
+      "example_en": "We would grade the persisted end state, monitor permission constraints, and inspect traces only when we need to explain failures.",
+      "translation_ko": "저장된 최종 상태를 평가하고 권한 제약을 감시하며, 실패 원인을 분석할 필요가 있을 때 실행 기록을 조사하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 물류 회사가 선적 예약 Agent를 시험한다. Agent는 예약 완료라고 답하지만 운영 시스템에는 예약 번호가 없을 수 있다. 경영진은 이를 업무 완료로 인정해도 되는지 묻는다.",
+    "question_en": "Our shipment-booking agent says the booking is complete. How would you prove it actually succeeded, and should every successful run use exactly the same tool sequence?",
+    "required_expression": "Verify the final state, not just the agent's claim",
+    "optional_expression_ids": [
+      "E3",
+      "E5"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 필수 표현과 E3 또는 E5 중 하나를 변형해 활용한다. 실제 예약 기록이 존재해야 성공이며, 유효한 대체 실행 경로를 무조건 실패 처리하면 안 된다는 점이나 확인 기준을 담는다. 실제 시스템 성과는 가정하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Anthropic Engineering",
+      "authors": [
+        "Anthropic Engineering"
+      ],
+      "title": "Demystifying evals for AI agents",
+      "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+      "type": "official engineering research article",
+      "published": "2026-01-09",
+      "updated": null,
+      "accessed_on": "2026-11-02",
+      "supports": "Defines task, trial, grader, trace and outcome; distinguishes claimed completion from real end state; recommends outcome checks, trace review and avoiding overly rigid path grading."
+    },
+    {
+      "id": "S2",
+      "organization": "OpenAI",
+      "authors": [
+        "OpenAI"
+      ],
+      "title": "Evaluation best practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+      "type": "official evaluation design guidance",
+      "published": null,
+      "updated": null,
+      "accessed_on": "2026-11-02",
+      "supports": "Recommends task-specific success criteria, representative evaluation cases, grading metrics, repeated evaluation, and human calibration; platform lifecycle guidance is separate."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "Read the author-written main text and evaluation definitions of Anthropic Engineering (2026-01-09) and the current OpenAI evaluation-best-practices guidance on 2026-11-02. OpenAI guide's Evals platform deprecation was observed; today's content addresses generic evaluation methodology, not availability of that platform. The invoice and shipment scenarios are hypothetical, not observed outcomes.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-02.md"
+}

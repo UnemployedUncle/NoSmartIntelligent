@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-01",
+  "last_lesson_date": "2026-11-02",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-02",
+      "date": "2026-11-02",
+      "topic": "Outcome-based agent evaluation — verifying real task completion",
+      "core_expression": "Verify the final state, not just the agent's claim",
+      "primary_source": "Anthropic Engineering",
+      "markdown_path": "learning/lessons/2026/11/2026-11-02.md",
+      "record_path": "learning/records/2026/11/2026-11-02.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-01",
       "date": "2026-11-01",
