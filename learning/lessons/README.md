@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-03 | Data drift — monitoring shifts in production inputs | Compare production inputs against the training baseline | AWS | [학습 카드](2026/11/2026-11-03.md) | [JSON](../records/2026/11/2026-11-03.json) |
 | 2026-11-02 | Outcome-based agent evaluation — verifying real task completion | Verify the final state, not just the agent's claim | Anthropic Engineering | [학습 카드](2026/11/2026-11-02.md) | [JSON](../records/2026/11/2026-11-02.json) |
 | 2026-11-01 | Knowledge distillation — Sunday review of teacher-guided student training | Train a smaller student model using guidance from a larger teacher | NVIDIA | [학습 카드](2026/11/2026-11-01.md) | [JSON](../records/2026/11/2026-11-01.json) |
 | 2026-10-31 | Knowledge distillation — teacher-guided training of a smaller model | Train a smaller student model using guidance from a larger teacher | NVIDIA | [학습 카드](2026/10/2026-10-31.md) | [JSON](../records/2026/10/2026-10-31.json) |
@@ -16,4 +17,5 @@
 | 2026-10-27 | Predictive calibration — confidence versus observed accuracy | Match confidence scores to observed accuracy | Microsoft Research | [학습 카드](2026/10/2026-10-27.md) | [JSON](../records/2026/10/2026-10-27.json) |
 | 2026-10-26 | Speculative decoding — draft and verification | Propose several tokens and verify them in parallel | NVIDIA | [학습 카드](2026/10/2026-10-26.md) | [JSON](../records/2026/10/2026-10-26.json) |
 | 2026-10-25 | Function calling — tool request versus authorized execution (Sunday review) | The model requests a tool call; the application executes it. | OpenAI | [학습 카드](2026/10/2026-10-25.md) | [JSON](../records/2026/10/2026-10-25.json) |
+
 <!-- NSI:LESSONS:END -->
