@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-04 | In-context learning — adapting to examples without weight updates | Use examples in the prompt to guide predictions without updating model weights | Google Research | [학습 카드](2026/11/2026-11-04.md) | [JSON](../records/2026/11/2026-11-04.json) |
 | 2026-11-03 | Data drift — monitoring shifts in production inputs | Compare production inputs against the training baseline | AWS | [학습 카드](2026/11/2026-11-03.md) | [JSON](../records/2026/11/2026-11-03.json) |
 | 2026-11-02 | Outcome-based agent evaluation — verifying real task completion | Verify the final state, not just the agent's claim | Anthropic Engineering | [학습 카드](2026/11/2026-11-02.md) | [JSON](../records/2026/11/2026-11-02.json) |
 | 2026-11-01 | Knowledge distillation — Sunday review of teacher-guided student training | Train a smaller student model using guidance from a larger teacher | NVIDIA | [학습 카드](2026/11/2026-11-01.md) | [JSON](../records/2026/11/2026-11-01.json) |

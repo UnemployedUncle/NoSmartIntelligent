@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-04",
+  "date": "2026-11-04",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.04 (수) — In-context Learning",
+  "topic": "In-context learning — adapting to examples without weight updates",
+  "term": {
+    "en": "In-context learning",
+    "abbreviation": "ICL",
+    "ko": "문맥 내 학습",
+    "definition_ko": "모델이 현재 프롬프트에 제공된 몇 개의 입력·라벨 예시를 활용해 새 입력의 출력을 정하는 방식이며, 이 추론 중 학습된 모델 가중치를 갱신하지 않는다. 예시의 대응 관계를 활용할 수도 있지만 사전 학습된 라벨 의미를 활용할 수도 있다.",
+    "distinction_ko": "ICL의 현재 문맥 기반 적응은 지식 증류·파인튜닝처럼 모델 가중치를 학습시키는 과정이 아니다. 예시를 따르는 정도는 모델과 예시 구성에 따라 달라지고 영구 학습이나 정확도를 보장하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Use examples in the prompt to guide predictions without updating model weights",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Use examples in the prompt to guide predictions without updating model weights",
+      "example_en": "In-context learning uses examples in the prompt to guide a model's predictions without updating its weights.",
+      "translation_ko": "문맥 내 학습은 모델의 가중치를 변경하지 않고 프롬프트 속 예시를 이용해 예측을 유도합니다.",
+      "use_ko": "ICL의 정의와 모델 재학습의 차이를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Provide input–label pairs before a new case",
+      "example_en": "We provide labeled examples of purchase inquiries before asking the model to classify a new message.",
+      "translation_ko": "새 메시지의 분류를 요청하기 전에 구매 문의의 라벨이 붙은 예시를 제공합니다.",
+      "use_ko": "몇 개의 예시를 프롬프트에 넣는 사용 방식을 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Infer input–label mappings from the examples",
+      "example_en": "The model can infer which inquiry descriptions map to each label from the examples in its context.",
+      "translation_ko": "모델은 문맥 속 예시를 보고 어떤 문의 설명이 어느 라벨에 대응하는지 추론할 수 있습니다.",
+      "use_ko": "예시가 입력과 출력의 관계를 전달하는 원리를 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Distinguish prior knowledge from demonstrated mappings",
+      "example_en": "We distinguish mappings inferred from the examples from meanings the model already associates with label names.",
+      "translation_ko": "예시에서 추론한 대응 관계와 모델이 라벨 이름에 이미 연결해 둔 의미를 구분합니다.",
+      "use_ko": "모델이 예시를 따르는지, 사전 지식으로 답하는지 논의할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Check whether the model follows unfamiliar labels",
+      "example_en": "We check whether the model assigns codes such as A17 and B24 by following the examples rather than guessing from label names.",
+      "translation_ko": "모델이 라벨 이름을 추측하는 대신 예시를 따라 A17, B24 같은 코드에 분류하는지 확인합니다.",
+      "use_ko": "임의의 코드나 업무 전용 라벨에서도 예시를 따르는지 테스트할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Compare performance with and without in-context examples",
+      "example_en": "We would compare classification accuracy on held-out inquiries with and without demonstrations in the prompt.",
+      "translation_ko": "별도 평가 문의에서 프롬프트에 예시가 있을 때와 없을 때의 분류 정확도를 비교하겠습니다.",
+      "use_ko": "실무 도입 전 예시의 효과를 검증하는 평가 방식을 제안할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "Business executives / nontechnical users",
+      "example_en": "We can illustrate a new inquiry classification rule with examples instead of training a new model, but we still need to validate the results.",
+      "translation_ko": "새 모델을 학습시키지 않고 예시로 문의 분류 규칙을 보여줄 수 있지만, 결과 검증은 여전히 필요합니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "Technical team",
+      "example_en": "We would freeze the model weights, vary the input–label examples in the prompt, and measure accuracy on unseen inquiries.",
+      "translation_ko": "모델 가중치를 고정하고 프롬프트의 입력·라벨 예시를 달리하여 미확인 문의의 정확도를 측정하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업이 설비 사고 티켓을 자체 심각도 코드 R1과 R2로 분류하려고 한다. 이전 학습 데이터와 코드 의미가 직접 연결돼 있지 않으며, 고객은 예시 몇 개만 보여주면 모델이 코드를 영구적으로 학습하는지 묻는다.",
+    "question_en": "If we show the assistant a few examples of our R1 and R2 incident codes, will it permanently learn our categories, and how would you test whether it follows the examples?",
+    "required_expression": "Use examples in the prompt to guide predictions without updating model weights",
+    "optional_expression_ids": [
+      "E5",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어(또는 30~45초). 필수 표현과 E5 또는 E6 중 하나만 선택해 변형 사용. 예시로 현재 추론을 유도하지만 가중치는 바뀌지 않는다는 점과 미확인 티켓에 대한 평가·한계를 설명. 정답 및 개인 응답은 공개 기록에 포함하지 않음."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Google Research",
+      "authors": "Jerry Wei; Denny Zhou (blog authors)",
+      "title": "Larger language models do in-context learning differently",
+      "url": "https://research.google/blog/larger-language-models-do-in-context-learning-differently/",
+      "type": "official research blog / study explanation",
+      "published": "2023-05-15",
+      "updated": null,
+      "accessed_on": "2026-11-04",
+      "supports": "Few-shot input–label pairs, semantic prior knowledge versus in-context mappings, flipped-label and unrelated-label evaluations, model-size-dependent findings."
+    },
+    {
+      "id": "S2",
+      "organization": "Anthropic / Transformer Circuits",
+      "authors": "Catherine Olsson et al.",
+      "title": "In-context Learning and Induction Heads",
+      "url": "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html",
+      "type": "research article / original mechanistic investigation (not asserted peer-reviewed)",
+      "published": "2022-03-08",
+      "updated": null,
+      "accessed_on": "2026-11-04",
+      "supports": "Models adapt to patterns in the prompt without retraining; research distinguishes task-based few-shot ICL from broader token-loss-based ICL; induction-head mechanisms are tentative for large models."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-04에 Google Research 연구 블로그의 정의·실험·한계를 본문에서 확인하고, Anthropic의 Transformer Circuits 저자 원문에서 ICL 정의와 비재학습 성격을 교차 검증함. 수치와 induction head의 미확정 가설은 일반화하지 않음. 기존 학습 이력 7개 기록 확인.",
+  "review_of": [
+    "nsi-2026-11-01"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-04.md"
+}
