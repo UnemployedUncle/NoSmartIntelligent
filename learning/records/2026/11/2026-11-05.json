@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-05",
+  "date": "2026-11-05",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.05 (목) — Quantization",
+  "topic": "Quantization — lower-precision model representation and inference trade-offs",
+  "term": {
+    "en": "Quantization",
+    "abbreviation": null,
+    "ko": "양자화 (모델 수치 정밀도 축소)",
+    "definition_ko": "신경망의 가중치나 활성값을 더 적은 비트의 형식으로 표현하는 최적화 기법이다. 메모리와 데이터 이동량을 줄일 수 있으나 근사 오차가 생기며 속도 및 품질 효과는 모델·하드웨어·구현에 따라 달라진다.",
+    "distinction_ko": "모델 값을 압축하는 것과 실제 하드웨어에서 추론 속도가 빨라지는 것은 다르다. 정답률 유지 역시 별도 평가가 필요하다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Represent model values in lower precision and validate the accuracy trade-off",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Represent model values in lower precision and validate the accuracy trade-off",
+      "example_en": "Quantization represents model weights or activations in lower precision to reduce memory use, while requiring checks for lost task accuracy.",
+      "translation_ko": "양자화는 가중치나 활성값을 더 낮은 정밀도로 표현하여 메모리 사용을 줄이되, 업무 정확도 손실을 확인해야 합니다.",
+      "use_ko": "양자화의 작동 원리와 제한을 한 번에 정의할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Map high-precision values onto fewer representable levels",
+      "example_en": "We map high-precision weights onto fewer representable levels, which can introduce rounding error.",
+      "translation_ko": "고정밀 가중치를 표현 가능한 더 적은 수의 값으로 대응시키며, 이 과정에서 반올림 오차가 생길 수 있습니다.",
+      "use_ko": "왜 정밀도 감소가 품질 손실을 일으킬 수 있는지 설명할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Calibrate scaling factors on representative inputs",
+      "example_en": "For activation quantization, we calibrate scaling factors using representative shipment records before exporting the model.",
+      "translation_ko": "활성값 양자화에서는 모델을 내보내기 전에 대표적인 선적 기록으로 스케일 계수를 보정합니다.",
+      "use_ko": "학습 후 양자화의 대표 데이터 사용 과정을 설명할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Compare task accuracy with the unquantized baseline",
+      "example_en": "We compare shipment-delay classification accuracy with the unquantized baseline on held-out cases.",
+      "translation_ko": "별도로 확보한 사례에서 양자화하지 않은 기준 모델과 선적 지연 분류 정확도를 비교합니다.",
+      "use_ko": "압축 후 품질 저하 여부를 객관적으로 검증할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Measure latency on the target hardware",
+      "example_en": "We measure end-to-end latency on the target GPU because fewer bits alone do not guarantee faster inference.",
+      "translation_ko": "비트 수 감소만으로 추론 속도가 빨라지는 것은 아니므로 목표 GPU에서 전체 응답 지연을 측정합니다.",
+      "use_ko": "실제 하드웨어·서빙 엔진에서의 속도 검증 필요성을 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Evaluate quantization-aware training if accuracy drops",
+      "example_en": "If post-training quantization causes unacceptable errors, we can evaluate quantization-aware training before deployment.",
+      "translation_ko": "학습 후 양자화로 허용할 수 없는 오류가 생기면 배포 전에 양자화 인지 학습을 평가할 수 있습니다.",
+      "use_ko": "PTQ가 품질 기준을 충족하지 못할 때의 다음 선택지를 제안할 때",
+      "source_ids": [
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business executive",
+      "example_en": "A lower-precision model may use less memory, but we would approve deployment only after checking quality and response time.",
+      "translation_ko": "저정밀 모델이 메모리를 덜 사용할 수 있지만 품질과 응답 시간을 확인한 후에만 도입을 승인하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical team",
+      "example_en": "We would calibrate activation ranges, benchmark held-out classification cases, and test latency in the intended inference engine.",
+      "translation_ko": "활성값 범위를 보정하고, 별도의 분류 사례를 벤치마크하며, 실제 사용할 추론 엔진에서 지연 시간을 시험하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 금융회사가 이상거래 분류 모델의 서빙 비용을 줄이기 위해 4비트 양자화를 검토한다. 고객은 곧바로 더 빠르고 동일한 정확도를 얻을 수 있는지 묻는다. 시스템·성능은 아직 검증되지 않았다.",
+    "question_en": "If we convert our transaction-risk model to four-bit precision, will it automatically run faster without losing accuracy, and what should we validate before rollout?",
+    "required_expression": "Represent model values in lower precision and validate the accuracy trade-off",
+    "optional_expression_ids": [
+      "E4",
+      "E5"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현을 자연스럽게 변형하고 E4 또는 E5 중 하나만 사용한다. 모델 값의 저정밀 표현, 정확도 손실 가능성, 평가 데이터 및 목표 장비에서의 실제 검증을 포함한다. 실제 결과를 가정하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "NVIDIA",
+      "authors": [
+        "Eduardo Alvarez",
+        "Huizi Mao",
+        "Wei-Ming Chen",
+        "Omri Almog"
+      ],
+      "title": "Optimizing LLMs for Performance and Accuracy with Post-Training Quantization",
+      "url": "https://developer.nvidia.com/blog/optimizing-llms-for-performance-and-accuracy-with-post-training-quantization/",
+      "type": "official engineering technical blog",
+      "published": "2025-08-01",
+      "updated": null,
+      "accessed_on": "2026-11-05",
+      "supports": "양자화의 정의, 가중치/활성값 정밀도, PTQ 보정, 품질과 메모리·추론 성능의 절충 관계"
+    },
+    {
+      "id": "S2",
+      "organization": "Microsoft Research",
+      "authors": [
+        "DeepSpeed Team",
+        "Andrey Proskurin"
+      ],
+      "title": "DeepSpeed Compression: A composable library for extreme compression and zero-cost quantization",
+      "url": "https://www.microsoft.com/en-us/research/blog/deepspeed-compression-a-composable-library-for-extreme-compression-and-zero-cost-quantization/",
+      "type": "official research engineering blog (ZeroQuant implementation and experimental explanation)",
+      "published": "2022-07-20",
+      "updated": null,
+      "accessed_on": "2026-11-05",
+      "supports": "저비트 가중치·활성값 표현, 정확도 보존을 위한 검증과 추가 훈련 선택, 커널/하드웨어 최적화 없이는 추론 속도 개선이 보장되지 않는 한계"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-05에 NVIDIA 2025-08-01 엔지니어링 본문과 Microsoft Research 2022-07-20 엔지니어링 본문을 웹에서 열어 정의·보정·정확도·서빙 엔진 의존성을 확인함. 벤치마크 수치는 일반화 우려로 인용하지 않음. 각 자료의 수정일은 확인하지 못함.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-05.md"
+}
