@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-06",
+  "date": "2026-11-06",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.06 (금) — Causal Inference",
+  "topic": "Causal inference — estimating intervention effects rather than correlations",
+  "term": {
+    "en": "Causal Inference",
+    "abbreviation": null,
+    "ko": "인과추론",
+    "definition_ko": "어떤 조치가 결과에 미친 영향을, 관찰된 결과와 그 조치가 없었다면 나타났을 반사실적 결과의 차이로 추정하는 통계적 추론. 두 결과를 한 대상에서 동시에 관찰할 수 없어 실험 설계나 명시적 가정에 근거한 분석이 필요하다.",
+    "distinction_ko": "관찰된 상관관계는 인과효과가 아니며 개입과 결과 모두에 영향을 주는 교란요인이 차이를 왜곡할 수 있다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Estimate the effect of an intervention against a credible counterfactual",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Estimate the effect of an intervention against a credible counterfactual",
+      "example_en": "Causal inference estimates how an intervention changes an outcome by comparing observed results with a credible counterfactual.",
+      "translation_ko": "인과추론은 실제 관찰한 결과와 타당한 반사실적 결과를 비교하여 개입이 결과를 얼마나 변화시켰는지 추정합니다.",
+      "use_ko": "인과추론의 목표를 고객에게 정의할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Define the intervention and outcome before comparing groups",
+      "example_en": "We first define the intervention as offering AI assistance and the outcome as time needed to complete a report.",
+      "translation_ko": "먼저 개입을 AI 지원 제공으로, 결과를 보고서 완성에 걸리는 시간으로 정의합니다.",
+      "use_ko": "효과 측정을 시작하기 전 무엇을 바꾸고 측정할지 명확히 할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Separate observed correlation from causal effect",
+      "example_en": "Employees using the assistant finish reports sooner, but that association alone does not establish a causal effect.",
+      "translation_ko": "AI 보조 도구를 쓰는 직원이 보고서를 더 빨리 끝내더라도 그 연관성만으로 인과효과가 입증되지는 않습니다.",
+      "use_ko": "사용자와 비사용자의 단순 평균 비교를 경계할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Identify confounders that influence adoption and outcomes",
+      "example_en": "We examine whether prior expertise affects both who adopts the assistant and how quickly reports are completed.",
+      "translation_ko": "기존 업무 숙련도가 도구 도입 여부와 보고서 작성 속도 모두에 영향을 주는지 살펴봅니다.",
+      "use_ko": "도입 효과를 왜곡할 수 있는 공통 원인을 조사할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Construct a credible comparison group",
+      "example_en": "When feasible, we would randomly assign eligible teams to AI-assisted and standard workflows.",
+      "translation_ko": "가능하다면 대상 팀을 AI 지원 업무 방식과 기존 업무 방식에 무작위로 배정하겠습니다.",
+      "use_ko": "무작위 실험으로 비교 가능성을 높이는 설계를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Test the sensitivity of the estimate to assumptions",
+      "example_en": "Without random assignment, we would state the causal assumptions and test how sensitive the estimated effect is to them.",
+      "translation_ko": "무작위 배정이 어렵다면 인과적 가정을 명시하고 추정 효과가 그 가정에 얼마나 민감한지 확인하겠습니다.",
+      "use_ko": "관찰 데이터 분석 결과의 한계를 검증할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executive",
+      "example_en": "A faster average among AI users does not prove the assistant caused the improvement; we need a valid comparison.",
+      "translation_ko": "AI 사용자들의 평균 속도가 더 빠르다고 해서 AI가 개선을 일으켰다는 뜻은 아닙니다. 타당한 비교가 필요합니다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "We would predefine treatment and outcome, assess confounding, estimate the effect, and run robustness checks.",
+      "translation_ko": "개입과 결과를 사전에 정의하고 교란 요인을 점검하며 효과를 추정한 뒤 강건성 검사를 수행하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업에서 AI 정비 도우미를 자발적으로 도입한 팀이 고장 처리를 더 빠르게 완료했다. 기존 숙련도가 도입과 성과 모두에 영향을 주었을 가능성이 있으며 무작위 배정·교란 검증은 아직 없다.",
+    "question_en": "Teams that chose our AI maintenance assistant resolve incidents faster. Doesn't that prove the assistant improved productivity?",
+    "required_expression": "Estimate the effect of an intervention against a credible counterfactual",
+    "optional_expression_ids": [
+      "E4",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장·40~70단어. 핵심과 선택 표현 1개 사용. 관찰된 속도 차이와 인과효과를 구별하고 숙련도 교란·비교 설계 또는 가정 검증을 제안하며 효과를 단정하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Microsoft Research",
+      "authors": [
+        "Emre Kiciman",
+        "Amit Sharma"
+      ],
+      "title": "DoWhy evolves to independent PyWhy model to help causal inference grow",
+      "url": "https://www.microsoft.com/en-us/research/blog/dowhy-evolves-to-independent-pywhy-model-to-help-causal-inference-grow/",
+      "type": "official research and engineering blog",
+      "published": "2022-05-31",
+      "updated": null,
+      "accessed_on": "2026-11-06",
+      "supports": "관찰된 상관관계와 개입 효과의 구분, 결과와 반사실적 비교, 인과 가정·식별·추정·반박의 절차"
+    },
+    {
+      "id": "S2",
+      "organization": "Amazon Web Services (AWS)",
+      "authors": [
+        "Paul Barna"
+      ],
+      "title": "Generate a counterfactual analysis of corn response to nitrogen with Amazon SageMaker JumpStart solutions",
+      "url": "https://aws.amazon.com/blogs/machine-learning/generate-a-counterfactual-analysis-of-corn-response-to-nitrogen-with-amazon-sagemaker-jumpstart-solutions/",
+      "type": "official technical blog and implementation case study",
+      "published": "2023-04-03",
+      "updated": null,
+      "accessed_on": "2026-11-06",
+      "supports": "교란변수의 예시, 관찰 데이터·도메인 지식·인과 그래프를 통한 개입 비교의 설계와 제약"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-06 웹 검색 후 Microsoft Research(2022)와 AWS(2023)의 관련 본문을 직접 열어 정의·교란 요인·식별 및 검증 절차를 확인. 공식 엔지니어링 글이지 해당 글 자체를 동료심사 연구로 분류하지 않음. 사용한 조직 사례는 모두 가상.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-06.md"
+}
