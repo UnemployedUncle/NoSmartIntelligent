@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-06",
+  "last_lesson_date": "2026-11-07",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-07",
+      "date": "2026-11-07",
+      "topic": "Grounding — linking generated claims to evidence without confusing citations with truth",
+      "core_expression": "Trace each factual claim to evidence that supports it",
+      "primary_source": "Google Research",
+      "markdown_path": "learning/lessons/2026/11/2026-11-07.md",
+      "record_path": "learning/records/2026/11/2026-11-07.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-06",
       "date": "2026-11-06",

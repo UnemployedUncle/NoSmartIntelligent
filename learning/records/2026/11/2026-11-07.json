@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-07",
+  "date": "2026-11-07",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.07 (토) — Grounding",
+  "topic": "Grounding — linking generated claims to evidence without confusing citations with truth",
+  "term": {
+    "en": "Grounding",
+    "abbreviation": null,
+    "ko": "근거 기반 생성(풀이)",
+    "definition_ko": "언어 모델의 사실적 주장과 이를 뒷받침하는 외부 정보 사이에 검증 가능한 연결을 만드는 접근. 오늘은 문장과 검색 문단 사이의 근거 연결을 다룸.",
+    "distinction_ko": "출처 링크나 출처에 대한 충실성만으로 해당 주장이 현실에서 사실임을 보장하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Trace each factual claim to evidence that supports it",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Trace each factual claim to evidence that supports it",
+      "example_en": "Grounding links an answer's factual claims to source passages that actually support them.",
+      "translation_ko": "그라운딩은 답변의 사실적 주장들을 실제로 그 주장을 뒷받침하는 원문 문단과 연결합니다.",
+      "use_ko": "근거 기반 답변의 목적을 임원 또는 현업에게 처음 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Retrieve relevant evidence before drafting the answer",
+      "example_en": "For the proposed audit assistant, we would retrieve relevant policy clauses before drafting a compliance summary.",
+      "translation_ko": "제안하는 감사 보조 시스템에서는 준법 요약을 작성하기 전에 관련 정책 조항을 검색하겠습니다.",
+      "use_ko": "답변 생성 이전의 근거 수집을 설계할 때(가상 제안).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Check whether a cited passage supports the exact claim",
+      "example_en": "We check whether the cited passage supports the exact claim, rather than merely sharing the same keywords.",
+      "translation_ko": "우리는 인용 문단이 단순히 동일한 키워드를 포함하는지보다 해당 주장을 실제로 뒷받침하는지 확인합니다.",
+      "use_ko": "문서와 문장 사이의 근거 관계를 검증할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Flag unsupported statements for review",
+      "example_en": "When no passage supports a statement, we flag it for review instead of presenting it as verified.",
+      "translation_ko": "주장을 뒷받침하는 문단이 없으면 검증된 사실처럼 제시하지 않고 검토 대상으로 표시합니다.",
+      "use_ko": "근거 없는 문장을 처리하는 평가·운영 규칙을 제안할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Require citations to substantiate the statements they accompany",
+      "example_en": "A citation is useful only if the linked material substantiates the statement it accompanies.",
+      "translation_ko": "인용은 연결된 자료가 해당 문장을 뒷받침할 때에만 근거로서 유용합니다.",
+      "use_ko": "출처 링크의 존재 자체를 성공으로 평가하지 않도록 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Evaluate source support separately from factual correctness",
+      "example_en": "We evaluate whether sources support the claims separately from whether those claims are true in the real world.",
+      "translation_ko": "출처가 주장을 뒷받침하는지와 해당 주장이 현실에서 사실인지 서로 구분하여 평가합니다.",
+      "use_ko": "근거 적합성과 사실 정확성의 차이를 설명할 때.",
+      "source_ids": [
+        "S2",
+        "S1"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executives",
+      "example_en": "Citations make an answer easier to audit, but a cited answer can still be wrong if its source is unreliable.",
+      "translation_ko": "인용이 있으면 답변의 검증은 쉬워지지만 출처가 신뢰할 수 없다면 인용이 달린 답변도 틀릴 수 있습니다.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "We would assess claim-level source support, inspect unsupported statements, and sample-check the reliability of cited documents.",
+      "translation_ko": "문장별 근거 적합성을 평가하고 근거 없는 주장을 점검하며 인용 문서의 신뢰성을 표본 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 유통기업이 공급업체 리스크 브리핑을 자동 생성한다. 모든 문단에 링크가 달려 있지만 일부는 근거가 불충분하고 문서의 신뢰성도 평가하지 않았다. 경영진은 링크가 있으면 결과를 검증된 것으로 취급해도 되는지 질문한다.",
+    "question_en": "Our supplier-risk briefing includes citations for every paragraph. Can we treat it as verified, or what additional checks would you require?",
+    "required_expression": "Trace each factual claim to evidence that supports it",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 40~70단어(또는 30~45초). 핵심 표현을 변형해 사용하고 E3 또는 E6 중 하나만 선택. 문장별 출처 근거 확인과 출처 신뢰성 또는 현실의 사실 여부 검증을 포함하고 검증을 보장하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Google Research",
+      "authors": [
+        "Xi Ye",
+        "Ruoxi Sun"
+      ],
+      "title": "Effective large language model adaptation for improved grounding",
+      "url": "https://research.google/blog/effective-large-language-model-adaptation-for-improved-grounding/",
+      "type": "official research blog explaining AGREE (NAACL 2024 research)",
+      "published": "2024-05-24",
+      "updated": null,
+      "accessed_on": "2026-11-07",
+      "supports": "Grounding as claims linked to evidence; passage-level support with NLI; limitations of automatic citation and tested AGREE research implementation."
+    },
+    {
+      "id": "S2",
+      "organization": "OpenAI",
+      "authors": [
+        "Jacob Hilton",
+        "Reiichiro Nakano",
+        "Suchir Balaji",
+        "John Schulman"
+      ],
+      "title": "WebGPT: Improving the factual accuracy of language models through web browsing",
+      "url": "https://openai.com/index/webgpt/",
+      "type": "official research and experiment report",
+      "published": "2021-12-16",
+      "updated": null,
+      "accessed_on": "2026-11-07",
+      "supports": "Source citation enables claim verification; citation alone does not guarantee factuality, since sources can be unreliable."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-07에 두 기관의 공식 연구 원문 본문을 열어 정의·메커니즘·한계를 확인. Google AGREE 연구 해설과 OpenAI WebGPT 연구 보고를 읽음. 두 연구에 특정한 성능 결과를 일반화하지 않았으며 게시일은 원문에 표시된 날짜만 기록.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-07.md"
+}
