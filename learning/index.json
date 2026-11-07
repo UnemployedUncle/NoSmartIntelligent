@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-07",
+  "last_lesson_date": "2026-11-08",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-08",
+      "date": "2026-11-08",
+      "topic": "Grounding — Sunday review of claim scope and evidence coverage",
+      "core_expression": "Trace each factual claim to evidence that supports it",
+      "primary_source": "Google Research",
+      "markdown_path": "learning/lessons/2026/11/2026-11-08.md",
+      "record_path": "learning/records/2026/11/2026-11-08.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-07",
       "date": "2026-11-07",

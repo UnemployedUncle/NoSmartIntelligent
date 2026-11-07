@@ -7,7 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
-| 2026-11-07 | Grounding — linking generated claims to evidence without confusing citations with truth | Trace each factual claim to evidence that supports it | Google Research | [학습 카드](2026/11/2026-11-07.md) | [JSON](../records/2026/11/2026-11-07.json) |
+| 2026-11-08 | Grounding — Sunday review of claim scope and evidence coverage | Trace each factual claim to evidence that supports it | Google Research | [학습 카드](2026/11/2026-11-08.md) | [JSON](../records/2026/11/2026-11-08.json) || 2026-11-07 | Grounding — linking generated claims to evidence without confusing citations with truth | Trace each factual claim to evidence that supports it | Google Research | [학습 카드](2026/11/2026-11-07.md) | [JSON](../records/2026/11/2026-11-07.json) |
 | 2026-11-06 | Causal inference — estimating intervention effects rather than correlations | Estimate the effect of an intervention against a credible counterfactual | Microsoft Research | [학습 카드](2026/11/2026-11-06.md) | [JSON](../records/2026/11/2026-11-06.json) |
 | 2026-11-05 | Quantization — lower-precision model representation and inference trade-offs | Represent model values in lower precision and validate the accuracy trade-off | NVIDIA | [학습 카드](2026/11/2026-11-05.md) | [JSON](../records/2026/11/2026-11-05.json) |
 | 2026-11-04 | In-context learning — adapting to examples without weight updates | Use examples in the prompt to guide predictions without updating model weights | Google Research | [학습 카드](2026/11/2026-11-04.md) | [JSON](../records/2026/11/2026-11-04.json) |

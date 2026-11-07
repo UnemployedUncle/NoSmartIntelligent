@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-08",
+  "date": "2026-11-08",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.08 (일) — Grounding (복습)",
+  "topic": "Grounding — Sunday review of claim scope and evidence coverage",
+  "term": {
+    "en": "Grounding",
+    "abbreviation": null,
+    "ko": "근거 기반 생성(풀이)",
+    "definition_ko": "언어 모델의 사실적 주장과 이를 실제로 뒷받침하는 외부 문서의 문단을 연결하고 검증할 수 있게 하는 접근. 오늘 복습은 인용 문서가 주장의 적용 범위('모든', '항상' 등)까지 지지하는지에 집중한다.",
+    "distinction_ko": "출처가 일부 사례만 다루면 전체 사례로 확대할 근거가 없다. 근거 지지 여부와 원천 자료 자체의 사실성·신뢰성도 구분해야 한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Trace each factual claim to evidence that supports it",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Trace each factual claim to evidence that supports it",
+      "example_en": "Grounding connects a generated factual claim to a passage that supports the claim's specific scope.",
+      "translation_ko": "근거 기반 생성은 생성된 사실적 주장을 그 주장의 구체적인 적용 범위까지 뒷받침하는 문단과 연결합니다.",
+      "use_ko": "임원이나 현업에게 Grounding의 핵심 의미를 간단히 정의할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Check whether the source covers the full claim",
+      "example_en": "The inspection report covers one facility, so it cannot support a statement about every facility.",
+      "translation_ko": "점검 보고서는 한 시설만 다루므로 모든 시설에 대한 주장을 뒷받침할 수 없습니다.",
+      "use_ko": "일부 자료에서 전체에 대한 결론을 내리는 과잉 일반화를 지적할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Narrow the claim to the evidence available",
+      "example_en": "We would revise 'all sites passed' to 'the inspected site passed' when only one site's results are documented.",
+      "translation_ko": "한 사업장의 결과만 문서화되어 있다면 '모든 사업장이 통과했다'를 '점검한 사업장이 통과했다'로 수정하겠습니다.",
+      "use_ko": "보고서에 쓰인 표현의 적용 범위를 실제 확인된 사실로 좁힐 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Flag unsupported generalizations for review",
+      "example_en": "If a summary extends one inspection result to the entire network, we flag that generalization for human review.",
+      "translation_ko": "요약이 한 점검 결과를 전체 사업장으로 확장하면 그 일반화된 주장을 사람의 검토 대상으로 표시합니다.",
+      "use_ko": "근거 범위를 초과한 문장을 승인 전에 걸러내는 운영 규칙을 제안할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Separate source support from factual correctness",
+      "example_en": "Even when a passage supports a summary, we still check whether the underlying report is reliable.",
+      "translation_ko": "원문이 요약을 뒷받침하더라도 원래 보고서 자체가 신뢰할 만한지는 별도로 확인합니다.",
+      "use_ko": "근거 적합성과 현실의 사실성을 혼동하지 않도록 설명할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Seek additional evidence before expanding the conclusion",
+      "example_en": "Before reporting company-wide compliance, we would request inspection records for the remaining sites.",
+      "translation_ko": "전사 준수 여부를 보고하기 전에 나머지 사업장의 점검 기록을 요청하겠습니다.",
+      "use_ko": "결론을 넓히기 위해 어떤 추가 자료가 필요한지 고객에게 제안할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executives",
+      "example_en": "A document link shows where a statement came from, not that every facility passed inspection; we would limit the conclusion to the sites checked.",
+      "translation_ko": "문서 링크는 주장의 출처를 보여줄 뿐 모든 시설이 점검을 통과했다는 증거는 아닙니다. 확인된 사업장으로 결론을 한정하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "We would break the draft into factual claims, assess passage-level support, and flag mismatches between the claim's scope and the cited evidence.",
+      "translation_ko": "초안을 사실적 주장 단위로 분해해 문단별 근거를 평가하고, 주장 범위와 인용 근거가 어긋나는 경우를 표시하겠습니다.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 기업이 분기 결산 보고서를 자동으로 작성한다. AI는 '모든 해외 지사가 기한 내 계정 대사를 완료했다'고 기재했지만, 근거 문서에는 다섯 지사 중 두 곳의 확인서만 있다. 재무 책임자는 이 문구를 이사회에 보고할 수 있는지 묻는다.",
+    "question_en": "Our AI memo says every overseas office completed its account reconciliation, but we have confirmations from only two of five offices. Can we send that statement to the board?",
+    "required_expression": "Trace each factual claim to evidence that supports it",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 필수 표현 E1과 선택 표현 E3 또는 E6 중 하나를 변형하여 사용한다. 두 곳의 확인 사실을 다섯 곳 전체로 일반화할 수 없음을 설명하고, 결론을 좁히거나 추가 증빙을 확보하도록 제안한다. 검증되지 않은 나머지 지사 상태는 추정하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Google Research",
+      "authors": [
+        "Xi Ye",
+        "Ruoxi Sun"
+      ],
+      "title": "Effective large language model adaptation for improved grounding",
+      "url": "https://research.google/blog/effective-large-language-model-adaptation-for-improved-grounding/",
+      "type": "official research blog explaining AGREE (NAACL 2024 research)",
+      "published": "2024-05-24",
+      "updated": null,
+      "accessed_on": "2026-11-08",
+      "supports": "AGREE의 문장별 근거 문단 판정, 지원되지 않은 문장에 인용을 붙이지 않는 과정과 보완 정보 검색. 오늘은 적용 범위 과잉 확장을 점검하는 실무 사례에 개념을 응용."
+    },
+    {
+      "id": "S2",
+      "organization": "OpenAI",
+      "authors": [
+        "Jacob Hilton",
+        "Reiichiro Nakano",
+        "Suchir Balaji",
+        "John Schulman"
+      ],
+      "title": "WebGPT: Improving the factual accuracy of language models through web browsing",
+      "url": "https://openai.com/index/webgpt/",
+      "type": "official research and experiment report",
+      "published": "2021-12-16",
+      "updated": null,
+      "accessed_on": "2026-11-08",
+      "supports": "출처 인용은 사실 검토를 돕지만 불신뢰 출처와 인용된 답변의 오류 가능성 때문에 사실성을 보장하지 못함."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-08(일) 준비 단계에서 Google Research AGREE 및 OpenAI WebGPT의 공식 저자 작성 본문을 실제 검색·열람해 정의·기법·한계를 교차 확인. 당일 이전 학습 카드 nsi-2026-11-07을 직접 읽은 일요일 복습. 준비본의 공개 게시와 학습자의 과제 수행 및 아침 전달은 서로 별개이며 사용자 답변·성적은 저장하지 않음.",
+  "review_of": [
+    "nsi-2026-11-07"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-08.md"
+}
