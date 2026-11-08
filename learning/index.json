@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-08",
+  "last_lesson_date": "2026-11-09",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-09",
+      "date": "2026-11-09",
+      "topic": "Continuous batching — iteration-level scheduling for LLM serving",
+      "core_expression": "Replace finished requests with new ones during decoding",
+      "primary_source": "NVIDIA",
+      "markdown_path": "learning/lessons/2026/11/2026-11-09.md",
+      "record_path": "learning/records/2026/11/2026-11-09.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-08",
       "date": "2026-11-08",

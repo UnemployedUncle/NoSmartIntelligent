@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-09",
+  "date": "2026-11-09",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026-11-09 (월) — Continuous Batching",
+  "topic": "Continuous batching — iteration-level scheduling for LLM serving",
+  "term": {
+    "en": "Continuous Batching",
+    "abbreviation": null,
+    "ko": "연속 배칭(풀이)",
+    "definition_ko": "자기회귀 방식의 텍스트 생성 모델을 서빙할 때 여러 요청을 생성 반복 단계에 걸쳐 함께 처리하고, 먼저 완료된 요청을 배치에서 빼고 새 요청을 투입하는 스케줄링 기법이다. 고정된 요청 그룹이 모두 끝나기를 기다리는 방식과 달리 배치 구성이 생성 중에 달라진다.",
+    "distinction_ko": "동시 처리량을 높일 가능성이 있지만 모든 개별 요청의 응답 지연이 감소한다는 뜻은 아니다. 실제 결과는 요청 도착률, 길이, 스케줄링, GPU와 KV-cache 메모리 제약에 따라 검증해야 한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Replace finished requests with new ones during decoding",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Replace finished requests with new ones during decoding",
+      "example_en": "Continuous batching schedules multiple text-generation requests across decoding iterations and replaces finished sequences with new requests.",
+      "translation_ko": "연속 배칭은 여러 텍스트 생성 요청을 디코딩 단계별로 스케줄링하고, 완료된 요청을 새 요청으로 교체합니다.",
+      "use_ko": "연속 배칭의 정의와 실제 작동을 처음 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Schedule requests at each generation step",
+      "example_en": "The server updates its active batch across generation steps so waiting requests can enter when capacity becomes available.",
+      "translation_ko": "서버는 생성 단계마다 활성 배치를 갱신하여 처리 여유가 생기면 대기 중인 요청을 투입합니다.",
+      "use_ko": "고정 배치와 달리 생성 도중 요청 구성이 바뀐다는 점을 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Avoid waiting for the longest response in a fixed batch",
+      "example_en": "Unlike a fixed batch, the scheduler does not need to wait for the longest response before admitting another request.",
+      "translation_ko": "고정 배치와 달리 스케줄러는 가장 긴 응답이 끝날 때까지 기다리지 않고 다음 요청을 받아들일 수 있습니다.",
+      "use_ko": "고정 배치의 대기 문제를 설명하고 연속 배칭과 대비할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Keep the model busy as requests finish at different times",
+      "example_en": "For a proposed HR assistant, continuous batching would keep the model serving new questions as shorter answers finish.",
+      "translation_ko": "가상의 인사 업무 보조 시스템에서는 짧은 답변이 끝날 때마다 새 질문을 처리하도록 모델의 활용도를 높이는 설계를 할 수 있습니다.",
+      "use_ko": "답변 길이가 다른 동시 사용자 요청에서 기대되는 운영 효과를 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Limit active requests to stay within memory capacity",
+      "example_en": "We would limit the number of active requests because each growing response also consumes key-value cache memory.",
+      "translation_ko": "응답이 길어질수록 각 요청의 KV 캐시도 메모리를 사용하므로 동시에 처리하는 요청 수를 제한하겠습니다.",
+      "use_ko": "배치 확대가 GPU 메모리 제약을 받는다는 점을 기술팀에 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Benchmark throughput alongside tail latency",
+      "example_en": "Before deployment, we would benchmark completed requests per second alongside p95 time-to-first-token under realistic traffic.",
+      "translation_ko": "배포 전에 실제와 유사한 트래픽에서 초당 완료 요청 수와 첫 토큰까지 걸리는 시간의 95백분위값을 함께 측정하겠습니다.",
+      "use_ko": "처리량 향상과 사용자 대기 시간 사이의 절충을 검증하는 평가 계획을 제안할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business executives",
+      "example_en": "Continuous batching could let us serve more conversations on the same hardware, but we would test waiting times before promising savings.",
+      "translation_ko": "연속 배칭으로 같은 하드웨어에서 더 많은 대화를 처리할 가능성이 있지만, 비용 절감을 약속하기 전에 실제 대기 시간을 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical teams",
+      "example_en": "We would tune the active-request limit, watch key-value cache pressure, and compare throughput with p95 first-token latency.",
+      "translation_ko": "동시 활성 요청 한도를 조정하고 KV 캐시 부담을 점검하며 처리량과 첫 토큰 지연 시간의 95백분위값을 비교하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 보험회사는 고객 청구 상태에 관한 짧은 질의와 긴 손해사정 요약을 동일한 LLM 서버에서 처리하려 합니다. 일부 요청이 오래 걸려 고객 대기 시간이 걱정됩니다. 연속 배칭 도입을 검토하지만 실제 성능은 측정하지 않았습니다.",
+    "question_en": "Our claims assistant handles quick status checks and long assessment summaries on the same model server. Will continuous batching make every customer's reply faster, and what should we measure?",
+    "required_expression": "Replace finished requests with new ones during decoding",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현 1개와 E3 또는 E6 중 1개를 상황에 맞게 변형하여 사용. 요청 교체 작동 방식과 처리량·개인별 지연의 차이, 검증 조건 하나를 포함하고 미측정 개선을 단정하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "NVIDIA",
+      "authors": [
+        "Shashank Verma",
+        "Neal Vaidya"
+      ],
+      "title": "Mastering LLM Techniques: Inference Optimization",
+      "url": "https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/",
+      "type": "official technical engineering blog",
+      "published": "2023-11-17",
+      "updated": null,
+      "accessed_on": "2026-11-09",
+      "supports": "Continuous/in-flight batching definition and iteration-level replacement of completed sequences; static batching and KV-cache constraints."
+    },
+    {
+      "id": "S2",
+      "organization": "Amazon Web Services (AWS)",
+      "authors": [
+        "Gagan Singh",
+        "Dhawalkumar Patel",
+        "Venugopal Pai"
+      ],
+      "title": "Improve throughput performance of Llama 2 models using Amazon SageMaker",
+      "url": "https://aws.amazon.com/blogs/machine-learning/improve-throughput-performance-of-llama-2-models-using-amazon-sagemaker/",
+      "type": "official engineering blog with implementation and benchmarking",
+      "published": "2023-09-25",
+      "updated": null,
+      "accessed_on": "2026-11-09",
+      "supports": "Comparison of dynamic/static-style batching and continuous batching, request-level scheduling, GPU memory constraints, metrics and one specific controlled benchmark."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-09에 NVIDIA 및 AWS 공식 저자 작성 본문을 웹 검색 후 직접 열어 정의·메커니즘·고정 배치 비교·메모리 제약·평가 조건을 교차 확인함. 실험 정량 결과를 보편적 성능으로 일반화하지 않았음. 04:15 준비용 단일 카드; 07:15 전달 전.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-09.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}
