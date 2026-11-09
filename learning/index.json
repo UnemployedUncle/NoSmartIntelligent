@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-09",
+  "last_lesson_date": "2026-11-10",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-10",
+      "date": "2026-11-10",
+      "topic": "Self-supervised visual representation learning — reusable image features from unlabeled data",
+      "core_expression": "Learn reusable image representations without relying on class labels",
+      "primary_source": "Google Research",
+      "markdown_path": "learning/lessons/2026/11/2026-11-10.md",
+      "record_path": "learning/records/2026/11/2026-11-10.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-09",
       "date": "2026-11-09",
