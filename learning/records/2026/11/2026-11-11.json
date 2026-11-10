@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-11",
+  "date": "2026-11-11",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026-11-11 (수) — ReAct (Reasoning and Acting)",
+  "topic": "ReAct (Reasoning and Acting) — observation-driven tool-use loop",
+  "term": {
+    "en": "ReAct (Reasoning and Acting)",
+    "abbreviation": "ReAct",
+    "ko": "추론과 행동의 결합(풀이)",
+    "definition_ko": "언어모델이 텍스트 추론, 도구 행동, 외부 시스템의 관측 결과를 교차 사용해 다음 행동을 조정하도록 설계한 연구 기반의 문제 해결 접근.",
+    "distinction_ko": "관측에 따라 행동 경로를 바꾸는 ReAct형 에이전트 루프와, 미리 정해진 단계를 따르는 고정 워크플로는 다르며 결과 정확성이나 실행 권한은 별도로 검증해야 한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Interleave reasoning, tool actions, and observations to adapt the next step",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Interleave reasoning, tool actions, and observations to adapt the next step",
+      "example_en": "ReAct interleaves reasoning with tool actions and observations so the next step can reflect newly retrieved information.",
+      "translation_ko": "ReAct는 추론과 도구 행동 및 관측 결과를 교차 활용하여 새로 확인한 정보에 맞춰 다음 단계를 조정합니다.",
+      "use_ko": "연구의 핵심 메커니즘을 정의할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Request external information before choosing the next action",
+      "example_en": "For a delayed shipment, the agent would check the latest tracking event before selecting another investigation step.",
+      "translation_ko": "선적이 지연되면 에이전트는 다음 조사 단계를 선택하기 전에 최신 추적 기록을 확인하겠습니다.",
+      "use_ko": "외부 시스템 조회가 필요한 이유를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Use observations to revise the action plan",
+      "example_en": "If the carrier reports a customs hold, the agent revises its plan and checks the missing documentation instead of repeating the original lookup.",
+      "translation_ko": "운송사가 세관 보류를 보고하면 에이전트는 기존 조회를 반복하는 대신 계획을 바꾸어 누락 서류를 확인합니다.",
+      "use_ko": "도구 결과에 따른 동적 재계획을 설명할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Distinguish an adaptive agent loop from a fixed workflow",
+      "example_en": "A fixed workflow follows predefined steps, whereas an adaptive agent loop chooses later actions using observations from earlier steps.",
+      "translation_ko": "고정 워크플로는 사전에 정해진 단계를 따르지만, 적응형 에이전트 루프는 앞선 관측 결과로 다음 행동을 선택합니다.",
+      "use_ko": "업무를 워크플로로 만들지 에이전트로 만들지 논의할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Check tool outputs before using them to make decisions",
+      "example_en": "We would check the timestamp and status fields in a tracking response before drafting an update for the logistics team.",
+      "translation_ko": "물류팀에 업데이트를 작성하기 전에 추적 응답의 시각과 상태 필드를 점검하겠습니다.",
+      "use_ko": "도구 관측값의 신뢰성을 검토하는 설계를 제안할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Set a stopping condition for repeated tool calls",
+      "example_en": "We would stop after a defined number of checks and request human review if the shipment discrepancy remains unresolved.",
+      "translation_ko": "정해진 횟수만큼 확인한 뒤에도 선적 정보 불일치가 해결되지 않으면 중단하고 사람의 검토를 요청하겠습니다.",
+      "use_ko": "비용·반복 오류를 통제하는 운영 한계를 설명할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executive",
+      "example_en": "The assistant can adjust its next check when shipment information changes, but we would still require approval before changing contractual records.",
+      "translation_ko": "배송 정보가 달라지면 보조 시스템이 다음 확인 항목을 조정할 수 있지만, 계약 기록 변경에는 여전히 승인이 필요합니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "We would log action-observation pairs, test recovery from tool errors, and cap the loop length to control repeated failures and cost.",
+      "translation_ko": "행동과 관측 결과의 쌍을 기록하고 도구 오류 복구를 시험하며, 반복 실패와 비용을 통제하도록 루프 길이에 상한을 두겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 소프트웨어 기업에서 청구서 금액이 계약 기록과 다르게 나타났다. AI에는 계약 조회·가격표 조회·결제 내역 조회 도구가 있지만 원인은 아직 확인되지 않았다. 수정은 사람 승인 이후에만 가능하다.",
+    "question_en": "Our invoice agent sees a mismatch between the contract price and the billed amount. How should it decide which system to check next, and when should it stop rather than change the invoice?",
+    "required_expression": "Interleave reasoning, tool actions, and observations to adapt the next step",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초로 답한다. 핵심 표현과 E3·E6 중 하나만 사용한다. 관측 결과를 반영해 다음 조사를 바꾸는 작동 방식과 검증/종료·승인 한계 하나를 설명한다. 앞서 제공한 nsi-2026-11-08의 근거 추적 관점을 떠올려도 되지만 추가 영어 표현 사용은 필수가 아니다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Google Research (Google Brain / Princeton University collaboration)",
+      "authors": [
+        "Shunyu Yao",
+        "Yuan Cao"
+      ],
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://research.google/blog/react-synergizing-reasoning-and-acting-in-language-models/",
+      "type": "official_research_explainer",
+      "published": "2022-11-08",
+      "updated": null,
+      "accessed_on": "2026-11-11",
+      "supports": "ReAct 연구의 추론·행동·관측 상호작용, few-shot ReAct 예시, 계획 수정, 연구별 평가 범위."
+    },
+    {
+      "id": "S2",
+      "organization": "Anthropic Engineering",
+      "authors": [
+        "Anthropic Engineering team"
+      ],
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/research/building-effective-agents",
+      "type": "official_engineering_guidance",
+      "published": "2024-12-19",
+      "updated": null,
+      "accessed_on": "2026-11-11",
+      "supports": "워크플로와 에이전트의 운영 구조 구별, 환경 피드백, 종료 조건, 비용·복잡성·사람의 통제에 대한 설계 권고."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-11 Google Research ReAct 공식 연구 해설과 Anthropic Engineering 공식 본문을 열어 확인했다. 연구 결과를 가상 물류/청구 사례에 일반화하지 않았다. 제공한 문장들은 새로운 재작성이다. 2026-11-08 Grounding 표현은 과제의 선택적 복습으로만 언급했다.",
+  "review_of": [
+    "nsi-2026-11-08"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-11.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending",
+  "prepared_on": "2026-11-11",
+  "commit_sha": null
+}

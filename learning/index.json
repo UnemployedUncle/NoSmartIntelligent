@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-10",
+  "last_lesson_date": "2026-11-11",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-11",
+      "date": "2026-11-11",
+      "topic": "ReAct (Reasoning and Acting) — observation-driven tool-use loop",
+      "core_expression": "Interleave reasoning, tool actions, and observations to adapt the next step",
+      "primary_source": "Google Research",
+      "markdown_path": "learning/lessons/2026/11/2026-11-11.md",
+      "record_path": "learning/records/2026/11/2026-11-11.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-10",
       "date": "2026-11-10",
