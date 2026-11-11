@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-12",
+  "date": "2026-11-12",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.12 (목) — Indirect Prompt Injection",
+  "topic": "Indirect prompt injection — untrusted external content masquerading as instructions",
+  "term": {
+    "en": "Indirect Prompt Injection",
+    "abbreviation": "IPI",
+    "ko": "간접 프롬프트 인젝션(풀이)",
+    "definition_ko": "웹페이지·이메일·검색 결과·첨부문서 등 외부 데이터의 지시가 AI의 원래 업무를 바꾸려는 공격. 모델이 분석 자료의 문장을 권한 있는 명령으로 오인할 때 위험이 발생한다.",
+    "distinction_ko": "외부 문서에 쓰인 지시가 사용자나 시스템이 승인한 실행 명령은 아니다. 출처 표시만으로 안전한 실행을 보장하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Treat instructions embedded in external content as untrusted data, not user commands",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Treat instructions embedded in external content as untrusted data, not user commands",
+      "example_en": "Indirect prompt injection occurs when instructions hidden in external content attempt to redirect an assistant away from the user's authorized task.",
+      "translation_ko": "간접 프롬프트 인젝션은 외부 콘텐츠에 숨겨진 지시가 도우미를 사용자가 승인한 업무에서 벗어나도록 유도할 때 발생합니다.",
+      "use_ko": "공격의 위치와 목적을 한 문장으로 정의할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Separate retrieved content from authorized instructions",
+      "example_en": "For a procurement assistant, we would treat a vendor attachment as information to analyze, not as permission to change an order.",
+      "translation_ko": "구매 보조 시스템에서는 공급업체 첨부파일을 분석할 정보로 취급하고 주문을 변경할 권한으로 보지 않겠습니다.",
+      "use_ko": "검색·첨부 자료와 실제 권한의 경계를 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Mark the provenance of untrusted passages",
+      "example_en": "A spotlighting-style design marks untrusted passages so the model has a clearer signal about where the text came from.",
+      "translation_ko": "Spotlighting 계열 설계는 신뢰할 수 없는 문단을 표시하여 모델이 텍스트의 출처를 더 명확히 구별하도록 돕습니다.",
+      "use_ko": "Microsoft 연구가 제안한 출처 구분 기법을 소개할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Constrain tool permissions independently of model instructions",
+      "example_en": "We would restrict file-sharing permissions in the application even if the model mistakenly proposes an external transfer.",
+      "translation_ko": "모델이 외부 전송을 잘못 제안하더라도 애플리케이션에서 파일 공유 권한을 제한하겠습니다.",
+      "use_ko": "모델의 판단에만 의존하지 않는 보안 설계를 제안할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Require approval before consequential actions",
+      "example_en": "Before sending a supplier list outside the company, the application should require authorization from the appropriate user.",
+      "translation_ko": "공급업체 목록을 외부로 보내기 전에 애플리케이션에서 적절한 사용자의 승인을 요구해야 합니다.",
+      "use_ko": "업무 영향이 큰 도구 실행에 승인 경계를 설계할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Measure attack success alongside legitimate task completion",
+      "example_en": "We would test whether malicious documents redirect the assistant while also checking whether normal summaries remain accurate.",
+      "translation_ko": "악성 문서가 도우미의 행동을 바꾸는지 시험하는 동시에 정상적인 요약 업무의 정확성도 확인하겠습니다.",
+      "use_ko": "방어 실험에서 공격 차단과 본래 업무 품질을 함께 평가할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "Business Executives",
+      "example_en": "A vendor document can contain instructions the company never approved, so we must limit what the assistant can do with that document.",
+      "translation_ko": "공급업체 문서에 회사가 승인하지 않은 지시가 들어 있을 수 있으므로 보조 시스템이 그 문서를 근거로 할 수 있는 행동을 제한해야 합니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "Technical Teams",
+      "example_en": "We would preserve source boundaries for retrieved text, enforce tool-level permissions, and red-team attempted unauthorized actions.",
+      "translation_ko": "검색 텍스트의 출처 경계를 유지하고 도구 수준의 권한을 강제하며 미승인 행동 시도를 레드팀 테스트하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업에서 품질검사 보조 에이전트가 외부 감사 보고서를 읽습니다. 보고서 안에는 품질 판정과 무관하게 원가 자료를 외부로 전송하라는 문장이 포함되어 있습니다. 사용자는 결함 요약만 요청했으며 실제 외부 전송은 승인하지 않았습니다.",
+    "question_en": "Our inspection assistant reads an external audit report that tells it to email internal cost data to a third party. The user only asked for a defect summary. How would you handle that instruction and test the safeguards?",
+    "required_expression": "Treat instructions embedded in external content as untrusted data, not user commands",
+    "optional_expression_ids": [
+      "E4",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현을 활용하고 E4 또는 E6 중 하나를 선택. 외부 문서의 지시가 사용자 승인과 다르다는 점과 애플리케이션 통제 또는 검증 계획을 설명. 앞서 제공한 ‘Check tool outputs before using them to make decisions’(nsi-2026-11-11)는 필요할 때 복습에 활용하되 필수는 아님."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "OpenAI",
+      "authors": [
+        "Thomas Shadwell",
+        "Adrian Spânu"
+      ],
+      "title": "Designing AI agents to resist prompt injection",
+      "url": "https://openai.com/index/designing-agents-to-resist-prompt-injection/",
+      "type": "official_security_engineering_article",
+      "published": "2026-03-11",
+      "updated": null,
+      "accessed_on": "2026-11-12",
+      "supports": "외부 콘텐츠의 공격 지시, source–sink 설계, 행동 통제와 승인 절차의 필요성"
+    },
+    {
+      "id": "S2",
+      "organization": "Microsoft Research",
+      "authors": [
+        "Keegan Hines",
+        "Gary Lopez",
+        "Matthew Hall",
+        "Federico Zarfati",
+        "Yonatan Zunger",
+        "Emre Kiciman"
+      ],
+      "title": "Defending Against Indirect Prompt Injection Attacks With Spotlighting",
+      "url": "https://arxiv.org/html/2403.14720v1",
+      "type": "arxiv_preprint_full_html",
+      "published": "2024-03-20",
+      "updated": null,
+      "accessed_on": "2026-11-12",
+      "supports": "간접 프롬프트 인젝션 정의, 출처 구분 기술인 spotlighting, 조건부 실험과 한계"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-12에 OpenAI 2026-03-11 보안·엔지니어링 원문 전체와 Microsoft 연구진의 2024-03-20 arXiv HTML 원 논문 본문·실험 구성·제한 사항을 직접 열어 확인. 기존 7일 학습 이력을 GitHub에서 확인. 특정 기업 보안 성능을 일반화하지 않음.",
+  "review_of": [
+    "nsi-2026-11-11"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-12.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}
