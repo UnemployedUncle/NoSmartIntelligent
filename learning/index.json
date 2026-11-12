@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-12",
+  "last_lesson_date": "2026-11-13",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-13",
+      "date": "2026-11-13",
+      "topic": "Conformal prediction — calibrating set-valued predictions for marginal coverage",
+      "core_expression": "Calibrate prediction sets for a target marginal coverage rate",
+      "primary_source": "Amazon Web Services (AWS)",
+      "markdown_path": "learning/lessons/2026/11/2026-11-13.md",
+      "record_path": "learning/records/2026/11/2026-11-13.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-12",
       "date": "2026-11-12",

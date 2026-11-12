@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-13 | Conformal prediction — calibrating set-valued predictions for marginal coverage | Calibrate prediction sets for a target marginal coverage rate | Amazon Web Services (AWS) | [학습 카드](2026/11/2026-11-13.md) | [JSON](../records/2026/11/2026-11-13.json) |
 | 2026-11-12 | Indirect prompt injection — untrusted external content masquerading as instructions | Treat instructions embedded in external content as untrusted data, not user commands | OpenAI | [학습 카드](2026/11/2026-11-12.md) | [JSON](../records/2026/11/2026-11-12.json) |
 | 2026-11-11 | ReAct (Reasoning and Acting) — observation-driven tool-use loop | Interleave reasoning, tool actions, and observations to adapt the next step | Google Research | [학습 카드](2026/11/2026-11-11.md) | [JSON](../records/2026/11/2026-11-11.json) |
 | 2026-11-10 | Self-supervised visual representation learning — reusable image features from unlabeled data | Learn reusable image representations without relying on class labels | Google Research | [학습 카드](2026/11/2026-11-10.md) | [JSON](../records/2026/11/2026-11-10.json) |

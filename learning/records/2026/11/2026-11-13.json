@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-13",
+  "date": "2026-11-13",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.13 (금) — Conformal Prediction",
+  "topic": "Conformal prediction — calibrating set-valued predictions for marginal coverage",
+  "term": {
+    "en": "Conformal Prediction",
+    "abbreviation": "CP",
+    "ko": "컨포멀 예측(풀이)",
+    "definition_ko": "정답 라벨이 있는 별도 보정 데이터의 비적합도 점수로 예측 집합을 구성한다. 보정·새 데이터의 교환가능성 등 조건에서 새 표본에 대한 목표 주변적 포함률을 제공하는 기법이다.",
+    "distinction_ko": "주변적 포함률은 전체 데이터 분포에 걸친 집합 포함의 성질이지 각 예측의 정답 확률 보장이 아니며, 분포 변화와 라벨 모호성이 전제를 약화시킬 수 있다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Calibrate prediction sets for a target marginal coverage rate",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Calibrate prediction sets for a target marginal coverage rate",
+      "example_en": "Conformal prediction uses a separate labeled calibration sample to construct prediction sets with a target marginal coverage rate, assuming exchangeable data.",
+      "translation_ko": "컨포멀 예측은 별도의 라벨 보정 표본을 이용해 데이터의 교환가능성을 전제로 목표 주변적 포함률을 갖는 예측 집합을 구성합니다.",
+      "use_ko": "개념 정의와 보장의 성립 조건을 함께 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Reserve a labeled holdout for calibration",
+      "example_en": "We would reserve independently labeled customer inquiries for calibration instead of reusing the model's training examples.",
+      "translation_ko": "모델 학습에 사용한 예제를 재사용하는 대신 별도로 정답을 확인한 고객 문의를 보정용으로 확보하겠습니다.",
+      "use_ko": "보정 데이터와 학습 데이터를 구분할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Convert nonconformity scores into a set threshold",
+      "example_en": "The method turns calibration nonconformity scores into a threshold that determines which class labels enter the prediction set.",
+      "translation_ko": "이 방법은 보정 데이터의 비적합도 점수를 기준값으로 바꾸고, 그 기준값에 따라 예측 집합에 포함할 라벨을 결정합니다.",
+      "use_ko": "실제 계산 절차를 기술 담당자에게 설명할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Return multiple plausible labels instead of forcing one",
+      "example_en": "For an ambiguous inquiry, the classifier could return both billing and account-access categories rather than forcing one label.",
+      "translation_ko": "분류가 모호한 문의에서는 한 라벨만 강제하기보다 청구와 계정 접근 두 범주를 모두 반환할 수 있습니다.",
+      "use_ko": "복수 후보를 내놓는 실무적 의미를 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Distinguish marginal coverage from per-case certainty",
+      "example_en": "A 90% marginal coverage target does not mean that every individual prediction has a 90% chance of being correct.",
+      "translation_ko": "목표 주변적 포함률이 90%라는 말은 개별 예측마다 90%의 정답 확률을 보장한다는 뜻이 아닙니다.",
+      "use_ko": "통계적 집합 포함률을 개별 정답 확률과 혼동하지 않도록 할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Recheck coverage after a distribution shift",
+      "example_en": "We would recheck observed coverage after customer inquiry patterns change because the calibration assumption may no longer hold.",
+      "translation_ko": "고객 문의 유형이 달라지면 보정에 사용한 분포 가정이 유지되지 않을 수 있으므로 실제 포함률을 다시 확인하겠습니다.",
+      "use_ko": "운영 환경 변화 이후의 보정과 재평가 필요성을 설명할 때",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "Business executives",
+      "example_en": "Prediction sets help us flag ambiguous customer requests for review, but the coverage target is a population-level property, not a promise for every case.",
+      "translation_ko": "예측 집합을 활용하면 모호한 고객 요청을 검토 대상으로 지정할 수 있지만, 목표 포함률은 전체 분포 수준의 성질이지 모든 사례에 대한 약속은 아닙니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "Technical teams",
+      "example_en": "We would calibrate a nonconformity threshold on held-out labels, then report marginal coverage and average set size on fresh evaluation data.",
+      "translation_ko": "별도 라벨 데이터에서 비적합도 임계값을 보정한 뒤 새로운 평가 데이터에서 주변적 포함률과 평균 집합 크기를 함께 보고하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 수출기업에서 구매·품질·법무 팀으로 RFQ 이메일을 분류합니다. 과거 이메일의 정답 라벨로 예측 집합을 보정했지만 최근 신규 시장에서 다른 유형의 문의가 들어오고 있습니다. 담당 임원은 90% 목표 포함률을 개별 이메일의 정확도 보장으로 이해하고 있습니다.",
+    "question_en": "If we set 90% coverage for our incoming RFQ classifier, can we promise that every classification is 90% reliable, even when requests arrive from a new market?",
+    "required_expression": "Calibrate prediction sets for a target marginal coverage rate",
+    "optional_expression_ids": [
+      "E5",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 목표 주변적 포함률을 개별 예측 정확도와 구별하고 신규 시장의 분포 변화 후 재검증을 제안한다. 7일 전 표현 'Test the sensitivity of the estimate to assumptions'는 선택적으로 하나만 복습할 수 있다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Amazon Web Services (AWS)",
+      "authors": [
+        "Thomas Bonnier",
+        "Juan Pilorget"
+      ],
+      "title": "Monitoring LLM Uncertainty in Financial Services on AWS",
+      "url": "https://aws.amazon.com/blogs/industries/monitoring-llm-uncertainty-in-financial-services-on-aws/",
+      "type": "official technical engineering blog / implementation and evaluation",
+      "published": "2026-09-09",
+      "updated": null,
+      "accessed_on": "2026-11-13",
+      "supports": "Conformal set construction with a labeled holdout, nonconformity-score threshold, marginal rather than conditional coverage, distribution-shift assumptions, and human review routing. Example metrics are specific to the post's MMLU study."
+    },
+    {
+      "id": "S2",
+      "organization": "Google Research / Transactions on Machine Learning Research (TMLR)",
+      "authors": [
+        "David Stutz",
+        "Abhijit Guha Roy",
+        "Tatiana Matejovicova",
+        "Patricia Strachan",
+        "Taylan Cemgil",
+        "Arnaud Doucet"
+      ],
+      "title": "Conformal prediction under ambiguous ground truth",
+      "url": "https://research.google/pubs/conformal-prediction-under-ambiguous-ground-truth/",
+      "type": "peer-reviewed journal publication (TMLR 2023), official publication abstract",
+      "published": null,
+      "updated": null,
+      "accessed_on": "2026-11-13",
+      "supports": "Held-out labeled calibration data, desired inclusion coverage, and a limitation when expert labels themselves are ambiguous. Only official abstract checked, not full paper."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-13에 AWS 2026년 기술 본문의 방법·전제·한계 및 Google Research의 TMLR 2023 공식 공개 초록을 실제 열어 확인했다. Google 논문 본문과 정량 실험 결과는 열람하지 않아 인용하지 않았다. 예문·업무 사례는 교육용 가상 문장이다.",
+  "review_of": [
+    "nsi-2026-11-06"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-13.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending",
+  "prepared_on": "2026-11-13"
+}
