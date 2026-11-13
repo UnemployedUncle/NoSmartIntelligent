@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-14",
+  "date": "2026-11-14",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026-11-14 (토) — Low-Rank Adaptation (LoRA)",
+  "topic": "Low-Rank Adaptation (LoRA) — task-specific weight updates through small trainable matrices",
+  "term": {
+    "en": "Low-Rank Adaptation",
+    "abbreviation": "LoRA",
+    "ko": "저랭크 적응(풀이)",
+    "definition_ko": "LoRA는 사전학습 모델의 기존 가중치를 고정한 채 일부 가중치 행렬에 더할 저랭크 업데이트를 작은 학습 가능 행렬로 학습하는 파라미터 효율적 미세조정 기법이다. 모델 구조·학습 과제에 따라 적용 계층을 선택하며, 전체 모델의 파라미터를 다시 학습하는 방식과는 다르다.",
+    "distinction_ko": "In-context learning은 프롬프트의 예시로 현재 추론을 유도하지만 일반적으로 가중치를 업데이트하지 않는다. LoRA 미세조정은 어댑터 파라미터를 실제 학습하므로 학습 데이터, 평가 및 서빙 구성이 별도로 필요하다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Freeze the base model and train low-rank adapters for task-specific behavior",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Freeze the base model and train low-rank adapters for task-specific behavior",
+      "example_en": "LoRA freezes a pretrained model's original weights and trains low-rank adapters that represent task-specific weight updates.",
+      "translation_ko": "LoRA는 사전학습 모델의 원래 가중치를 고정하고 과제별 가중치 변화를 표현하는 저랭크 어댑터를 학습합니다.",
+      "use_ko": "LoRA의 정의와 학습 대상을 처음 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Represent a weight update as the product of two smaller matrices",
+      "example_en": "For selected transformer layers, LoRA represents the learned weight update as the product of two smaller trainable matrices.",
+      "translation_ko": "선택된 트랜스포머 계층에서 LoRA는 학습되는 가중치 변화량을 두 개의 작은 학습 가능 행렬의 곱으로 표현합니다.",
+      "use_ko": "저랭크 업데이트의 구조를 기술 담당자에게 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Limit trainable parameters while retaining the pretrained weights",
+      "example_en": "We would train adapters for contract-clause tagging while leaving the pretrained base weights unchanged.",
+      "translation_ko": "사전학습한 기본 가중치는 변경하지 않고 계약 조항 태깅용 어댑터를 학습하겠습니다.",
+      "use_ko": "전체 미세조정 대신 어댑터 학습을 검토하는 고객에게",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Keep separate adapters for different downstream tasks",
+      "example_en": "A proposed document service could switch between a contract-tagging adapter and a supplier-email adapter if its serving stack supports adapter selection.",
+      "translation_ko": "제안하는 문서 서비스의 서빙 환경이 어댑터 선택을 지원한다면 계약 태깅용과 공급업체 메일용 어댑터를 전환해 사용할 수 있습니다.",
+      "use_ko": "한 기본 모델을 여러 업무로 확장할 때의 서빙 설계 옵션을 설명할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Distinguish adapter fine-tuning from in-context prompting",
+      "example_en": "Unlike adding examples to a prompt, LoRA fine-tuning uses training data to update adapter parameters.",
+      "translation_ko": "프롬프트에 예시를 추가하는 것과 달리 LoRA 미세조정은 학습 데이터를 이용해 어댑터 파라미터를 업데이트합니다.",
+      "use_ko": "프롬프트 수정과 모델 학습의 차이를 명확히 할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Evaluate task quality and resource costs against a baseline",
+      "example_en": "We would compare clause-tagging quality, training-memory use, and inference latency against a prompt-only baseline on held-out documents.",
+      "translation_ko": "별도 평가 문서에서 프롬프트만 사용하는 기준 방식과 조항 태깅 품질, 학습 메모리 사용량, 추론 지연 시간을 비교하겠습니다.",
+      "use_ko": "어댑터 도입이 가치 있는지 검증할 실험을 제안할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executive",
+      "example_en": "Rather than retraining every model weight, we would adapt a smaller set of parameters for contract tagging and test whether the quality gains justify the training.",
+      "translation_ko": "모델의 모든 가중치를 다시 학습하기보다 계약 태깅을 위한 작은 규모의 파라미터를 조정하고, 품질 개선이 추가 학습을 정당화하는지 확인하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "We would freeze the base weights, tune adapter rank on validated clause labels, and benchmark task accuracy and memory use against full fine-tuning where feasible.",
+      "translation_ko": "기본 가중치를 고정하고 검증된 조항 라벨로 어댑터 랭크를 조정하며, 가능한 경우 전체 미세조정과 과제 정확도 및 메모리 사용량을 비교하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 온라인 유통사가 상품 상세설명의 금지된 표시 문구를 탐지하려 한다. 현재 프롬프트에 몇 가지 예시를 넣고 있으며 검증된 라벨이 있는 상품 설명 데이터를 일부 보유한다. 아직 LoRA의 성능 향상은 측정하지 않았다.",
+    "question_en": "We already include examples in our prompt. Why would we train a LoRA adapter to detect prohibited claims in product descriptions, and what evidence would justify that change?",
+    "required_expression": "Freeze the base model and train low-rank adapters for task-specific behavior",
+    "optional_expression_ids": [
+      "E5",
+      "E6"
+    ],
+    "answer_guide_ko": "핵심 표현 1개와 선택 표현(E5 또는 E6) 1개를 사용해 영어 3~5문장 약 40~70단어로 설명. 어댑터에 학습되는 파라미터와 프롬프트 예시의 차이를 밝히고, 미측정 효과를 확정하지 않으며 분리된 평가 데이터에서 품질·비용을 비교할 방안을 제안한다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Microsoft Research",
+      "authors": [
+        "Edward J. Hu",
+        "Yelong Shen",
+        "Phillip Wallis",
+        "Zeyuan Allen-Zhu",
+        "Yuanzhi Li",
+        "Shean Wang",
+        "Lu Wang",
+        "Weizhu Chen"
+      ],
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "url": "https://www.microsoft.com/en-us/research/publication/lora-low-rank-adaptation-of-large-language-models/",
+      "type": "ICLR 2022 peer-reviewed paper (official Microsoft Research publication page)",
+      "published": null,
+      "updated": null,
+      "accessed_on": "2026-11-14",
+      "supports": "사전학습 가중치를 고정하고 학습 가능한 저랭크 행렬로 작업별 업데이트를 표현하는 정의, 전체 미세조정과의 연구상 비교. 게시 연월 2022-04 확인, 정확한 날짜 미확인"
+    },
+    {
+      "id": "S2",
+      "organization": "NVIDIA Technical Blog",
+      "authors": [
+        "Annamalai Chockalingam",
+        "Kedar Potdar"
+      ],
+      "title": "Deploy Diverse AI Apps with Multi-LoRA Support on RTX AI PCs and Workstations",
+      "url": "https://developer.nvidia.com/blog/deploy-diverse-ai-apps-with-multi-lora-support-on-rtx-ai-pcs-and-workstations/",
+      "type": "Official technical engineering blog",
+      "published": "2024-08-28",
+      "updated": null,
+      "accessed_on": "2026-11-14",
+      "supports": "저자 본문의 LoRA 작동 원리, BA 저랭크 업데이트, 랭크 선택의 비용과 다중 어댑터 서빙 조건을 교차 확인. AI-generated summary가 아닌 본문을 확인"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-14 한국 시간. Microsoft Research ICLR 2022 공식 출판 페이지와 NVIDIA 2024-08-28 Technical Blog 저자 본문을 직접 열어 정의/방법/한계를 확인. Microsoft 페이지는 2022-04까지만 확인되어 published=null. 일반화할 수 없는 원 논문의 특정 성능 배수와 NVIDIA 특정 하드웨어 수치는 본문 예문에 사용하지 않음. 모든 업무 예문은 가상 사례.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-14.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending",
+  "prepared_on": "2026-11-14"
+}
