@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-15 | Low-Rank Adaptation (LoRA) — Sunday review of separate adapters and shared base weights | Freeze the base model and train low-rank adapters for task-specific behavior | Microsoft Research | [학습 카드](2026/11/2026-11-15.md) | [JSON](../records/2026/11/2026-11-15.json) |
 | 2026-11-14 | Low-Rank Adaptation (LoRA) — task-specific weight updates through small trainable matrices | Freeze the base model and train low-rank adapters for task-specific behavior | Microsoft Research | [학습 카드](2026/11/2026-11-14.md) | [JSON](../records/2026/11/2026-11-14.json) |
 | 2026-11-13 | Conformal prediction — calibrating set-valued predictions for marginal coverage | Calibrate prediction sets for a target marginal coverage rate | Amazon Web Services (AWS) | [학습 카드](2026/11/2026-11-13.md) | [JSON](../records/2026/11/2026-11-13.json) |
 | 2026-11-12 | Indirect prompt injection — untrusted external content masquerading as instructions | Treat instructions embedded in external content as untrusted data, not user commands | OpenAI | [학습 카드](2026/11/2026-11-12.md) | [JSON](../records/2026/11/2026-11-12.json) |
