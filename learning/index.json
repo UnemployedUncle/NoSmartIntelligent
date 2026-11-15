@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-15",
+  "last_lesson_date": "2026-11-16",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-16",
+      "date": "2026-11-16",
+      "topic": "Process supervision — step-level feedback versus final-outcome rewards",
+      "core_expression": "Reward verifiable intermediate steps rather than only the final answer",
+      "primary_source": "OpenAI",
+      "markdown_path": "learning/lessons/2026/11/2026-11-16.md",
+      "record_path": "learning/records/2026/11/2026-11-16.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-15",
       "date": "2026-11-15",
