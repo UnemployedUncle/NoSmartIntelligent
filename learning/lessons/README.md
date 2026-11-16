@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-17 | Sparse mixture of experts (MoE) — token-level conditional computation and routing load | Route each token to a few expert subnetworks instead of activating every expert | Google Research | [학습 카드](2026/11/2026-11-17.md) | [JSON](../records/2026/11/2026-11-17.json) |
 | 2026-11-16 | Process supervision — step-level feedback versus final-outcome rewards | Reward verifiable intermediate steps rather than only the final answer | OpenAI | [학습 카드](2026/11/2026-11-16.md) | [JSON](../records/2026/11/2026-11-16.json) |
 | 2026-11-15 | Low-Rank Adaptation (LoRA) — Sunday review of separate adapters and shared base weights | Freeze the base model and train low-rank adapters for task-specific behavior | Microsoft Research | [학습 카드](2026/11/2026-11-15.md) | [JSON](../records/2026/11/2026-11-15.json) |
 | 2026-11-14 | Low-Rank Adaptation (LoRA) — task-specific weight updates through small trainable matrices | Freeze the base model and train low-rank adapters for task-specific behavior | Microsoft Research | [학습 카드](2026/11/2026-11-14.md) | [JSON](../records/2026/11/2026-11-14.json) |

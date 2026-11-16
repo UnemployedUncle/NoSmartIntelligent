@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-17",
+  "date": "2026-11-17",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.17 (화) — Sparse Mixture of Experts (MoE)",
+  "topic": "Sparse mixture of experts (MoE) — token-level conditional computation and routing load",
+  "term": {
+    "en": "Sparse Mixture of Experts",
+    "abbreviation": "MoE",
+    "ko": "희소 전문가 혼합 모델(풀이)",
+    "definition_ko": "조건부 연산을 이용하여 모델 내부의 여러 전문가 하위 네트워크 중 입력 토큰마다 일부만 실행하는 신경망 아키텍처. 많은 Transformer MoE에서는 선택한 피드포워드 계층을 여러 전문가 네트워크로 바꾸고 라우터가 실행 대상을 정한다.",
+    "distinction_ko": "MoE의 전문가는 모델 내부 계산 단위이며, 정비·구매 등 비즈니스 업무를 독립적으로 수행하는 에이전트 또는 도구 호출을 뜻하지 않는다. 희소 활성화가 항상 빠른 응답을 보장하는 것도 아니다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Route each token to a few expert subnetworks instead of activating every expert",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Route each token to a few expert subnetworks instead of activating every expert",
+      "example_en": "A sparse mixture-of-experts model routes each input token to a small subset of expert subnetworks instead of activating every expert.",
+      "translation_ko": "희소 전문가 혼합 모델은 모든 전문가를 활성화하는 대신 입력 토큰마다 일부 전문가 하위 네트워크를 선택합니다.",
+      "use_ko": "MoE의 구조와 조건부 연산을 처음 정의할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Replace selected feed-forward layers with expert subnetworks",
+      "example_en": "In many Transformer MoE designs, multiple expert networks replace selected dense feed-forward layers.",
+      "translation_ko": "여러 Transformer MoE 설계에서는 일부 기존 피드포워드 계층을 여러 전문가 네트워크로 대체합니다.",
+      "use_ko": "전문가가 별도 챗봇이 아니라 모델 내부의 계층임을 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Use a router to select experts for each token",
+      "example_en": "A learned router scores each token against available experts and selects a subset according to its routing strategy.",
+      "translation_ko": "학습된 라우터는 토큰과 각 전문가의 적합도를 평가하고 라우팅 방식에 따라 일부 전문가를 선택합니다.",
+      "use_ko": "입력이 어떻게 전문가에게 배정되는지 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Separate total model capacity from active computation",
+      "example_en": "The model stores parameters for many experts, but each token uses only a selected subset during a sparse MoE forward pass.",
+      "translation_ko": "모델은 여러 전문가의 파라미터를 보유하지만 희소 MoE의 한 번의 순전파에서 각 토큰은 선택된 일부만 사용합니다.",
+      "use_ko": "전체 파라미터 수와 토큰당 연산량을 구분할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Check expert load imbalance and capacity limits",
+      "example_en": "We would inspect expert loads and token drops in a capacity-limited routing setup before choosing a deployment design.",
+      "translation_ko": "배포 설계를 선택하기 전 처리 용량이 제한된 라우팅 구성에서 전문가별 부하와 누락되는 토큰을 확인하겠습니다.",
+      "use_ko": "일부 전문가 과부하와 토큰 누락 가능성을 검토할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Benchmark end-to-end latency and memory against a dense baseline",
+      "example_en": "We would compare answer quality, end-to-end latency, and memory use on matched workloads rather than assume sparse routing is always faster.",
+      "translation_ko": "희소 라우팅이 항상 빠르다고 가정하지 않고 동일한 업무 조건에서 답변 품질, 전체 지연 시간, 메모리 사용량을 비교하겠습니다.",
+      "use_ko": "모델 도입의 성능·비용 효과를 검증할 때",
+      "source_ids": [
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "임원·비전공 현업",
+      "example_en": "MoE activates selected parts of a model for each input token, but its real efficiency depends on the serving setup.",
+      "translation_ko": "MoE는 입력 토큰별로 모델의 일부만 활성화하지만 실제 효율은 서빙 구성에 따라 달라집니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "기술 담당자",
+      "example_en": "We would measure expert utilization, routing skew, and communication overhead at representative batch sizes before production rollout.",
+      "translation_ko": "운영 배포 전에 대표 배치 크기에서 전문가 사용률, 라우팅 편차, 통신 오버헤드를 측정하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업이 장비 정비 기록을 요약하는 LLM을 도입하려 합니다. 공급업체는 모델에 'experts'가 많아서 정비, 품질, 구매 업무를 각각 전문적으로 처리하고 항상 더 빠르다고 설명합니다. 아직 고객 업무의 품질과 지연 시간은 측정하지 않았습니다.",
+    "question_en": "Our vendor says its mixture-of-experts model has specialists for maintenance, quality, and procurement and will always respond faster. Does token routing actually work like separate business agents, and how would you verify the benefit?",
+    "required_expression": "Route each token to a few expert subnetworks instead of activating every expert",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현 하나와 E3 또는 E6 중 하나만 사용. MoE가 내부 토큰 단위의 조건부 연산이라는 점과 업무 에이전트 라우팅의 차이, 실측이 필요한 한계 하나를 설명. 앞서 제공한 'Evaluate task quality and resource costs against a baseline'을 떠올려 비교 실험에 연결해도 좋지만 필수 아님."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Google Research",
+      "authors": "Yanqi Zhou",
+      "title": "Mixture-of-Experts with Expert Choice Routing",
+      "url": "https://www.research.google/blog/mixture-of-experts-with-expert-choice-routing/",
+      "type": "official research blog (explaining a NeurIPS 2022 research paper)",
+      "published": "2022-11-16",
+      "updated": null,
+      "accessed_on": "2026-11-17",
+      "supports": "Conditional computation, token-to-expert routing, token-choice versus expert-choice routing, load imbalance and capacity constraints"
+    },
+    {
+      "id": "S2",
+      "organization": "NVIDIA Technical Blog",
+      "authors": "Kyle Kranen; Vinh Nguyen",
+      "title": "Applying Mixture of Experts in LLM Architectures",
+      "url": "https://developer.nvidia.com/blog/applying-mixture-of-experts-in-llm-architectures",
+      "type": "official engineering/technical blog",
+      "published": "2024-03-14",
+      "updated": null,
+      "accessed_on": "2026-11-17",
+      "supports": "Expert feed-forward subnetworks, sparse activation, model capacity versus active computation, routing experiments and inference efficiency caveats"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-17에 Google Research 공식 글의 MoE routing·expert choice·부하 불균형 본문과 NVIDIA 저자 작성 기술 본문의 sparse MoE·expert FFN·라우팅·실험·서빙 한계를 직접 열어 확인. NVIDIA 페이지의 AI-generated summary는 근거에서 제외. NeurIPS 연결 논문 전문은 읽지 않았으며 연구 해설과 기술 블로그를 동료심사 원논문으로 표시하지 않음. 특정 제품의 속도·정확도 수치를 일반화하지 않음. 사례와 고객 질문은 가상.",
+  "review_of": [
+    "nsi-2026-11-14"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-17.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}
