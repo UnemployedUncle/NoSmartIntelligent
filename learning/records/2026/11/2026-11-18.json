@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-18",
+  "date": "2026-11-18",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026-11-18 (수) — Sparse Autoencoders (SAEs)",
+  "topic": "Sparse autoencoders (SAEs) — extracting candidate features from model activations",
+  "term": {
+    "en": "Sparse Autoencoder",
+    "abbreviation": "SAE",
+    "ko": "희소 오토인코더(풀이)",
+    "definition_ko": "희소 오토인코더(SAE)는 언어 모델의 내부 활성화 값을 입력받아, 제한된 수의 활성 특징으로 이를 재구성하도록 학습하는 보조 신경망 기법입니다. 특징은 여러 뉴런에 걸친 패턴일 수 있으며, 사람이 이해할 수 있는 후보 개념을 찾는 데 쓰입니다. 기존 언어 모델이 특정 이유로 답했다는 사실을 자동으로 증명하는 도구는 아닙니다.",
+    "distinction_ko": "SAE가 찾은 특징은 단일 뉴런이나 확정된 인과적 설명과 같지 않습니다. 사람이 붙인 개념 라벨은 다양한 예시 및 필요하면 개입 실험으로 검증해야 하며, 특징 일부는 해석하기 어렵거나 원래 활성화를 완전히 복원하지 못합니다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Learn sparse features from model activations to investigate internal representations",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Learn sparse features from model activations to investigate internal representations",
+      "example_en": "A sparse autoencoder is an auxiliary model trained to reconstruct a language model's internal activations using a sparse set of learned features.",
+      "translation_ko": "희소 오토인코더는 언어 모델의 내부 활성화 값을 소수의 활성 특징으로 재구성하도록 학습하는 보조 모델입니다.",
+      "use_ko": "SAE의 정의와 학습 대상을 비전공 고객에게 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Reconstruct hidden activations from a sparse feature code",
+      "example_en": "We would train the autoencoder on hidden activations and check how closely its sparse feature code reconstructs them.",
+      "translation_ko": "내부 활성화 값으로 오토인코더를 학습하고 희소 특징 코드가 원래 활성화 값을 얼마나 잘 재구성하는지 확인하겠습니다.",
+      "use_ko": "입력 데이터와 재구성 검증의 대상을 구체적으로 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Encourage only a few features to activate for each input",
+      "example_en": "A sparsity constraint encourages the encoder to activate only a small subset of learned features for each input.",
+      "translation_ko": "희소성 제약은 각 입력마다 학습된 특징 중 일부만 활성화되도록 유도합니다.",
+      "use_ko": "왜 'sparse'라는 이름을 쓰는지 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Inspect activating examples before labeling a feature",
+      "example_en": "We would inspect diverse text passages that strongly activate a candidate feature before calling it a contract-risk signal.",
+      "translation_ko": "후보 특징을 계약 위험 신호라고 부르기 전에 해당 특징이 강하게 활성화되는 다양한 문단을 살펴보겠습니다.",
+      "use_ko": "특징에 사람이 이해할 수 있는 의미를 부여할 때의 검증을 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Probe feature effects with controlled interventions",
+      "example_en": "Where model access permits, researchers can amplify a selected feature and compare how the model's responses change.",
+      "translation_ko": "모델 내부에 접근할 수 있다면 연구자는 특정 특징을 인위적으로 증폭하고 모델 응답이 어떻게 달라지는지 비교할 수 있습니다.",
+      "use_ko": "단순 상관관계 관찰을 넘어 행동 영향을 실험하는 방법을 설명할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Avoid treating an interpretable feature as a complete causal explanation",
+      "example_en": "A feature associated with a claim type does not, by itself, explain every step behind a model's decision.",
+      "translation_ko": "특정 클레임 유형과 관련된 특징 하나만으로 모델 판단의 모든 단계를 설명할 수는 없습니다.",
+      "use_ko": "모델 해석의 범위를 과장하지 않고 한계를 명시할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "임원·비전공 현업",
+      "example_en": "Feature analysis may reveal recurring patterns inside a language model, but we would not use it as a stand-alone compliance guarantee.",
+      "translation_ko": "특징 분석은 언어 모델 내부의 반복되는 패턴을 보여줄 수 있지만, 이를 단독으로 규정 준수의 보증 수단으로 사용하지는 않겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "기술팀",
+      "example_en": "We would measure activation reconstruction quality, sparsity, and the consistency of feature interpretations on held-out examples.",
+      "translation_ko": "별도 평가 예시에서 활성화 재구성 품질, 희소성, 특징 해석의 일관성을 측정하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업에서 설비 정비 기록을 요약하는 언어 모델이 긴급 점검을 권고합니다. SAE 분석 결과 과열 기록에 반응하는 특징이 발견되었습니다. 고객은 이 특징이 모든 긴급 점검 권고의 이유를 증명하는지 묻습니다. 모델 내부 활성화 접근 가능 여부와 검증 결과는 아직 확정되지 않았습니다.",
+    "question_en": "Our maintenance-summary model sometimes recommends urgent equipment checks. If a sparse autoencoder reveals a feature that activates on overheating reports, does that prove the model used that feature to reach each recommendation?",
+    "required_expression": "Learn sparse features from model activations to investigate internal representations",
+    "optional_expression_ids": [
+      "E4",
+      "E5"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현과 E4 또는 E5 하나를 변형하여 사용. SAE의 입력·학습 원리, 특징 활성화와 실제 결정 원인 간 구분, 다양한 예시나 통제된 개입의 검증 필요성을 설명. 아직 수행하지 않은 분석과 성능 향상을 사실처럼 말하지 않기."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "OpenAI",
+      "authors": "Jeffrey Wu, Leo Gao, Tom Dupré la Tour, Henk Tillman",
+      "title": "Extracting concepts from GPT-4",
+      "url": "https://openai.com/index/extracting-concepts-from-gpt-4/",
+      "type": "official research explanation of large-scale sparse-autoencoder experiments (not a peer-reviewed paper)",
+      "published": "2024-06-06",
+      "updated": null,
+      "accessed_on": "2026-11-18",
+      "supports": "Sparse autoencoders trained on language-model activations, candidate features and activation visualizations, incomplete reconstruction and interpretability limitations"
+    },
+    {
+      "id": "S2",
+      "organization": "Anthropic Interpretability",
+      "authors": "Anthropic Interpretability team (individual article authors not specified)",
+      "title": "Mapping the mind of a large language model",
+      "url": "https://www.anthropic.com/research/mapping-mind-language-model",
+      "type": "official research explanation linked to Scaling Monosemanticity research (not itself a peer-reviewed article)",
+      "published": "2024-05-21",
+      "updated": null,
+      "accessed_on": "2026-11-18",
+      "supports": "Dictionary learning of sparse activation features, examples across contexts, feature interventions, incomplete coverage and unresolved causal circuits"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-18에 OpenAI 'Extracting concepts from GPT-4' 공식 저자 본문(희소 오토인코더, 특징 시각화, 해석 및 재구성 한계)과 Anthropic 'Mapping the mind of a large language model' 공식 연구 해설 본문(dictionary learning, 뉴런·특징 차이, 특징 개입, 제한)을 각각 직접 열어 검증. 두 자료는 공식 연구 해설이며 그 자체를 동료심사 논문으로 표기하지 않음. 원 논문의 상세 정량 실험은 본 학습 카드에서 인용하지 않음. 사례와 고객 질문은 가상.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-18.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}

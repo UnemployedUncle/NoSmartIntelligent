@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-17",
+  "last_lesson_date": "2026-11-18",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-18",
+      "date": "2026-11-18",
+      "topic": "Sparse autoencoders (SAEs) — extracting candidate features from model activations",
+      "core_expression": "Learn sparse features from model activations to investigate internal representations",
+      "primary_source": "OpenAI",
+      "markdown_path": "learning/lessons/2026/11/2026-11-18.md",
+      "record_path": "learning/records/2026/11/2026-11-18.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-17",
       "date": "2026-11-17",
