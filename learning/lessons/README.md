@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-19 | Prefill/decode disaggregation — independently scaling prompt processing and generation | Separate prompt processing from token generation to optimize each phase independently | NVIDIA Technical Blog | [학습 카드](2026/11/2026-11-19.md) | [JSON](../records/2026/11/2026-11-19.json) |
 | 2026-11-18 | Sparse autoencoders (SAEs) — extracting candidate features from model activations | Learn sparse features from model activations to investigate internal representations | OpenAI | [학습 카드](2026/11/2026-11-18.md) | [JSON](../records/2026/11/2026-11-18.json) |
 | 2026-11-17 | Sparse mixture of experts (MoE) — token-level conditional computation and routing load | Route each token to a few expert subnetworks instead of activating every expert | Google Research | [학습 카드](2026/11/2026-11-17.md) | [JSON](../records/2026/11/2026-11-17.json) |
 | 2026-11-16 | Process supervision — step-level feedback versus final-outcome rewards | Reward verifiable intermediate steps rather than only the final answer | OpenAI | [학습 카드](2026/11/2026-11-16.md) | [JSON](../records/2026/11/2026-11-16.json) |
