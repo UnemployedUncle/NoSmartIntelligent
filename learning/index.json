@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-19",
+  "last_lesson_date": "2026-11-20",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-20",
+      "date": "2026-11-20",
+      "topic": "Specification gaming — optimizing the stated criterion without achieving the intended outcome",
+      "core_expression": "Distinguish meeting a stated metric from achieving the intended outcome",
+      "primary_source": "Google DeepMind",
+      "markdown_path": "learning/lessons/2026/11/2026-11-20.md",
+      "record_path": "learning/records/2026/11/2026-11-20.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-19",
       "date": "2026-11-19",
