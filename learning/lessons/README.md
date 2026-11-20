@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-21 | Out-of-distribution (OOD) generalization — testing model quality on unseen environments | Evaluate generalization on unseen environments rather than relying only on random splits | Google Research | [학습 카드](2026/11/2026-11-21.md) | [JSON](../records/2026/11/2026-11-21.json) |
 | 2026-11-20 | Specification gaming — optimizing the stated criterion without achieving the intended outcome | Distinguish meeting a stated metric from achieving the intended outcome | Google DeepMind | [학습 카드](2026/11/2026-11-20.md) | [JSON](../records/2026/11/2026-11-20.json) |
 | 2026-11-19 | Prefill/decode disaggregation — independently scaling prompt processing and generation | Separate prompt processing from token generation to optimize each phase independently | NVIDIA Technical Blog | [학습 카드](2026/11/2026-11-19.md) | [JSON](../records/2026/11/2026-11-19.json) |
 | 2026-11-18 | Sparse autoencoders (SAEs) — extracting candidate features from model activations | Learn sparse features from model activations to investigate internal representations | OpenAI | [학습 카드](2026/11/2026-11-18.md) | [JSON](../records/2026/11/2026-11-18.json) |

@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-21",
+  "date": "2026-11-21",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.21 (토) — Out-of-Distribution (OOD) Generalization",
+  "topic": "Out-of-distribution (OOD) generalization — testing model quality on unseen environments",
+  "term": {
+    "en": "Out-of-distribution generalization",
+    "abbreviation": "OOD generalization",
+    "ko": "분포 밖 일반화(풀이)",
+    "definition_ko": "Out-of-distribution (OOD) generalization은 학습에 사용한 환경과 데이터 분포가 다른 새로운 환경에서도 모델이 유용한 예측 성능을 유지하는 능력이다. 단순 무작위 검증 분할이 아니라 학습에서 제외한 공장·지역·장비 등의 환경으로 평가할 때 확인할 수 있으며, 기존 환경에서의 높은 정확도가 새 환경에서의 성능을 보장하지 않는다.",
+    "distinction_ko": "분포 이동 탐지(data drift detection)는 입력 특성의 변화 여부를 확인하는 일이고, OOD 일반화 평가는 실제 새 환경에서의 예측 품질을 확인하는 일이다. 분포 이동의 존재나 부재만으로 정확도 변화를 확정할 수 없다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Evaluate generalization on unseen environments rather than relying only on random splits",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Evaluate generalization on unseen environments rather than relying only on random splits",
+      "example_en": "Out-of-distribution generalization is the ability of a model to retain useful predictive performance on environments that differ from its training environments.",
+      "translation_ko": "분포 밖 일반화는 학습 환경과 다른 환경에서도 모델이 유용한 예측 성능을 유지하는 능력입니다.",
+      "use_ko": "새 환경에서의 일반화 능력을 정의할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Hold out entire sites to simulate deployment shifts",
+      "example_en": "We would train the defect classifier on plants A and B and reserve plant C for an out-of-distribution evaluation.",
+      "translation_ko": "공장 A와 B의 데이터로 불량 분류기를 학습하고 공장 C는 분포 밖 평가용으로 따로 남기겠습니다.",
+      "use_ko": "무작위 분할과 다른 평가 설계를 제안할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Inspect spurious correlations across environments",
+      "example_en": "We would check whether background lighting predicts defect labels at the original sites but not at the new plant.",
+      "translation_ko": "기존 공장의 배경 조명이 불량 라벨과 연관되지만 새로운 공장에서는 그렇지 않은지 확인하겠습니다.",
+      "use_ko": "학습 환경에만 존재하는 지름길 특성을 설명할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Compare per-environment error rates against an in-distribution baseline",
+      "example_en": "We would report defect recall separately for each held-out plant and compare it with the in-distribution test result.",
+      "translation_ko": "제외해 둔 공장별 불량 재현율을 따로 보고하고 기존 분포의 테스트 결과와 비교하겠습니다.",
+      "use_ko": "평가 결과가 어느 환경에서 악화되는지 고객에게 보여줄 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Stress-test combinations of shifting attributes",
+      "example_en": "We would also test cases where both the camera type and lighting conditions change, rather than varying one factor at a time.",
+      "translation_ko": "한 번에 하나의 요인만 바꾸기보다 카메라 종류와 조명 조건이 함께 달라지는 사례도 시험하겠습니다.",
+      "use_ko": "복합적인 환경 변화에 대한 견고성을 점검할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Do not infer robustness from a high pooled test score",
+      "example_en": "A strong score on a random test split does not prove that the classifier will handle a new plant reliably.",
+      "translation_ko": "무작위 테스트 분할에서 점수가 높더라도 새로운 공장에서 분류기가 안정적으로 작동한다는 증거는 아닙니다.",
+      "use_ko": "오프라인 테스트 점수의 적용 범위를 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "executive",
+      "example_en": "A model that performs well in our current plants may still miss defects at a new site; we would validate it there before rollout.",
+      "translation_ko": "현재 공장에서 성능이 좋아도 새로운 사업장에서는 불량을 놓칠 수 있으므로, 확산 전에 그 환경에서 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical",
+      "example_en": "We would construct site-held-out splits, stratify recall by defect type, and test correlated shifts in camera hardware and lighting.",
+      "translation_ko": "사업장 단위의 홀드아웃 분할을 구성하고 불량 유형별 재현율을 나누어 측정하며 카메라 장비와 조명의 복합 변화를 시험하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 송장 검증 모델은 기존 공급업체의 송장을 무작위로 나눈 테스트에서 높은 점수를 받았습니다. 이제 서식과 발행 시스템이 다른 신규 공급업체의 송장을 처리해야 하지만 신규 업체의 라벨 기반 성능은 측정하지 않았습니다.",
+    "question_en": "Our invoice-validation model scored well on a random test split from existing suppliers. Can we assume it will work just as well for new suppliers with different invoice formats, and how would you test that?",
+    "required_expression": "Evaluate generalization on unseen environments rather than relying only on random splits",
+    "optional_expression_ids": [
+      "E2",
+      "E4"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 필수 표현과 E2/E4 중 하나를 변형해 사용한다. 기존 공급업체의 랜덤 분할과 신규 공급업체 홀드아웃 평가의 차이, 신규 데이터에서의 실측 지표 및 한계를 말한다. 완성 모범답안은 제시하지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Google Research",
+      "authors": [
+        "Dustin Tran",
+        "Balaji Lakshminarayanan"
+      ],
+      "title": "Towards Reliability in Deep Learning Systems",
+      "url": "https://research.google/blog/towards-reliability-in-deep-learning-systems/",
+      "type": "official research blog explaining Plex and robust-generalization evaluation; not itself a peer-reviewed article",
+      "published": "2022-07-14",
+      "updated": null,
+      "accessed_on": "2026-11-21",
+      "supports": "훈련 분포와 실제 배포 데이터의 불일치, 불확실성과 분포 밖 일반화 구분, 다양한 분포 이동에 대한 평가 필요"
+    },
+    {
+      "id": "S2",
+      "organization": "Microsoft Research (authors); ICLR 2023",
+      "authors": [
+        "Jivat Neet Kaur",
+        "Emre Kiciman",
+        "Amit Sharma"
+      ],
+      "title": "Modeling the Data-Generating Process is Necessary for Out-of-Distribution Generalization",
+      "url": "https://arxiv.org/html/2206.07837v4",
+      "type": "ICLR 2023 peer-reviewed research paper; original full text arXiv v4 HTML, revised 2024-05-17",
+      "published": "2023",
+      "updated": "2024-05-17",
+      "accessed_on": "2026-11-21",
+      "supports": "미관측 도메인에서의 일반화 평가 정의, 가짜 상관 및 복합 속성 이동, 고정된 제약이 모든 분포 이동에서 통하지 않는다는 연구 범위"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-21에 Google Research 공식 연구 해설 원문(2022-07-14), Microsoft Research 저자의 ICLR 2023 논문 원문(arXiv HTML v4, 2024-05-17 개정) 본문을 직접 열어 정의·적용 범위·미관측 도메인 평가·복합 이동 및 가짜 상관에 관한 근거를 확인함. 본문 수치/도표를 인용하지 않았고 연구 설계 결과를 가상 고객 성능으로 일반화하지 않음. 사용자 실제 데이터 미포함.",
+  "review_of": [],
+  "lesson_path": "learning/lessons/2026/11/2026-11-21.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}
