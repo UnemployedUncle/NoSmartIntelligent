@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-22",
+  "date": "2026-11-22",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.22 (일) — OOD Generalization (Sunday Review)",
+  "topic": "Out-of-distribution (OOD) generalization — Sunday review in new delivery regions",
+  "term": {
+    "en": "Out-of-distribution generalization",
+    "abbreviation": "OOD generalization",
+    "ko": "분포 밖 일반화(풀이)",
+    "definition_ko": "학습 과정에서 보지 못한 환경의 데이터 분포가 학습 환경과 다를 때에도 모델이 유용한 예측 성능을 유지하는 능력이다. 실제 평가에는 기존 환경을 섞은 무작위 분할뿐 아니라 완전히 제외한 배포 환경의 정답 라벨이 필요하다.",
+    "distinction_ko": "기존 환경에서의 높은 무작위 분할 점수는 새 지역 성능을 보장하지 않는다. 분포 이동을 발견하는 것과 새 환경에서 실제 예측 오류를 측정하는 것은 다른 일이다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Evaluate generalization on unseen environments rather than relying only on random splits",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Evaluate generalization on unseen environments rather than relying only on random splits",
+      "example_en": "Out-of-distribution generalization asks whether a trained model retains useful predictive performance in environments that differ from its training environments.",
+      "translation_ko": "분포 밖 일반화는 학습 환경과 다른 환경에서도 학습된 모델이 유용한 예측 성능을 유지하는지를 다룹니다.",
+      "use_ko": "복습: OOD 일반화의 의미를 정확히 정의할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Hold out a complete operating region for evaluation",
+      "example_en": "We would hold out labeled deliveries from the new region to test the delay classifier before rollout.",
+      "translation_ko": "새 지역의 정답 라벨이 확보된 배송 기록을 별도로 남겨 배포 전에 지연 분류기를 평가하겠습니다.",
+      "use_ko": "기존 지역과 새로운 배포 지역의 평가 데이터를 분리할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Check for environment-specific shortcuts",
+      "example_en": "We would check whether a carrier code acts as a shortcut for delay predictions only in the original regions.",
+      "translation_ko": "운송사 코드가 기존 지역에서만 배송 지연을 예측하는 편법적 단서로 작용하는지 확인하겠습니다.",
+      "use_ko": "새로운 환경에서 유지되지 않을 수 있는 비본질적 상관을 점검할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Report error rates separately for each deployment environment",
+      "example_en": "We would compare missed-delay rates by region instead of reporting only an overall test average.",
+      "translation_ko": "전체 테스트 평균만 보고하는 대신 지역별 배송 지연 미탐지율을 비교하겠습니다.",
+      "use_ko": "전체 평균에 가려지는 환경별 성능 저하를 드러낼 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Stress-test simultaneous changes in multiple attributes",
+      "example_en": "We would test changes in both carrier mix and weather conditions because multiple shifts can expose different weaknesses.",
+      "translation_ko": "운송사 구성과 기상 조건이 동시에 바뀌는 상황도 시험하겠습니다. 여러 변화가 다른 약점을 드러낼 수 있기 때문입니다.",
+      "use_ko": "복합 분포 이동에 대한 평가 설계를 설명할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Avoid extrapolating in-distribution accuracy to unseen regions",
+      "example_en": "A high score on existing routes does not establish how accurately the model will predict delays in a new region.",
+      "translation_ko": "기존 경로에서 점수가 높아도 새로운 지역의 지연 예측 정확도가 입증된 것은 아닙니다.",
+      "use_ko": "이전 환경의 성과를 새로운 현장의 보장으로 확대하지 않을 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executive",
+      "example_en": "Before extending delay alerts to a new region, we would verify missed alerts there rather than rely on the existing network's accuracy.",
+      "translation_ko": "새 지역으로 배송 지연 경보를 확대하기 전에 기존 네트워크의 정확도에 의존하지 않고 해당 지역의 미탐지 경보를 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "We would create region-held-out test sets, report false-negative rates by carrier and weather condition, and prevent test-label leakage into model selection.",
+      "translation_ko": "지역별 홀드아웃 테스트 세트를 만들고 운송사·기상 조건별 거짓 음성 비율을 보고하며, 테스트 라벨이 모델 선택에 누출되지 않도록 하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 고객지원 회사는 이메일 문의로 티켓 우선순위 분류 모델을 학습했다. 새 모바일 채팅 채널의 문의는 짧은 표현과 새로운 유형을 포함한다. 기존 이메일의 무작위 분할 점수만 확보되어 있고, 모바일 채널의 별도 성능 평가는 아직 없다.",
+    "question_en": "Our ticket-priority model performs well on random splits of email requests. We're now launching it for mobile-chat requests with different wording and issue types. Can we rely on the existing score, and how would you test generalization before rollout?",
+    "required_expression": "Evaluate generalization on unseen environments rather than relying only on random splits",
+    "optional_expression_ids": [
+      "E2",
+      "E4"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현과 E2/E4 중 하나를 변형해 사용. 모바일 채널의 분포 이동, 채널 단위 홀드아웃과 중요 티켓 재현율 또는 미탐지율, 미검증 성과에 대한 한계를 포함하고 모범답안은 제공하지 않음."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Google Research",
+      "authors": [
+        "Dustin Tran",
+        "Balaji Lakshminarayanan"
+      ],
+      "title": "Towards Reliability in Deep Learning Systems",
+      "url": "https://research.google/blog/towards-reliability-in-deep-learning-systems/",
+      "type": "Official Google Research research explanation of the Plex reliability framework, including robust generalization; not a peer-reviewed article itself",
+      "published": "2022-07-14",
+      "updated": null,
+      "accessed_on": "2026-11-22",
+      "supports": "Definitions of robust generalization under distribution shift and distinct reliability evaluation across novel scenarios"
+    },
+    {
+      "id": "S2",
+      "organization": "Microsoft Research (authors); ICLR 2023",
+      "authors": [
+        "Jivat Neet Kaur",
+        "Emre Kiciman",
+        "Amit Sharma"
+      ],
+      "title": "Modeling the Data-Generating Process is Necessary for Out-of-Distribution Generalization",
+      "url": "https://arxiv.org/html/2206.07837v4",
+      "type": "ICLR 2023 peer-reviewed research paper; accessed full-text arXiv v4 HTML revision",
+      "published": "2023",
+      "updated": "2024-05-17",
+      "accessed_on": "2026-11-22",
+      "supports": "Unseen-domain evaluation, spurious attributes, simultaneous shifts in multiple attributes, and limits of fixed assumptions across shifts"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "Sunday review of the confirmed 2026-11-21 OOD lesson; reread official Google Research blog and Microsoft Research authors' ICLR 2023 paper full-text HTML (arXiv v4). No PDF analyzed. Academic and illustrative claims separated. Prepared at 04:15 Asia/Seoul run, not yet delivered to learner.",
+  "review_of": [
+    "nsi-2026-11-21"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-22.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}
