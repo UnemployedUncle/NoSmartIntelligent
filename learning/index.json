@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-22",
+  "last_lesson_date": "2026-11-23",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-23",
+      "date": "2026-11-23",
+      "topic": "Speculative decoding — draft-and-verify generation with exact output-distribution preservation",
+      "core_expression": "Draft multiple tokens with a lightweight model, then verify them in parallel with the target model",
+      "primary_source": "NVIDIA Technical Blog",
+      "markdown_path": "learning/lessons/2026/11/2026-11-23.md",
+      "record_path": "learning/records/2026/11/2026-11-23.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-22",
       "date": "2026-11-22",

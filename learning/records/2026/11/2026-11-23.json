@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-23",
+  "date": "2026-11-23",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.23 (월) — Speculative Decoding",
+  "topic": "Speculative decoding — draft-and-verify generation with exact output-distribution preservation",
+  "term": {
+    "en": "Speculative decoding",
+    "abbreviation": null,
+    "ko": "추측 디코딩(풀이)",
+    "definition_ko": "작은 초안 모델이 여러 다음 토큰 후보를 제안하고 목표 모델이 병렬로 검증해 자동회귀 추론의 순차 반복 횟수를 줄이는 기법이다. 정확한 수용·거부 샘플링 규칙을 구현하면 목표 모델의 출력 확률분포를 유지한다.",
+    "distinction_ko": "확률분포 보존은 매 실행마다 같은 텍스트를 출력한다는 의미가 아니다. 실제 지연 개선은 초안 생성·검증 오버헤드와 채택 길이에 따라 달라진다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Draft multiple tokens with a lightweight model, then verify them in parallel with the target model",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Draft multiple tokens with a lightweight model, then verify them in parallel with the target model",
+      "example_en": "Speculative decoding lets a lightweight drafter propose several tokens for parallel verification by a larger target model, while exact sampling preserves the target model's output distribution.",
+      "translation_ko": "Speculative decoding은 가벼운 초안 생성기가 여러 토큰을 제안하고 큰 목표 모델이 병렬 검증하도록 하며, 정확한 샘플링 규칙을 적용하면 목표 모델의 출력 확률분포가 유지됩니다.",
+      "use_ko": "기법의 작동 방식과 분포 보존 조건을 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Propose candidate tokens before running the target verification pass",
+      "example_en": "For a long support response, a smaller model would propose the next few tokens before the target model verifies them.",
+      "translation_ko": "긴 고객지원 답변에서는 작은 모델이 다음 몇 개 토큰을 제안한 뒤 목표 모델이 이를 검증하도록 설계할 수 있습니다.",
+      "use_ko": "작은 모델의 역할이 최종 답변 결정이 아니라 후보 제안임을 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Verify draft tokens in parallel and resume after a rejection",
+      "example_en": "The target model checks the draft in one pass, keeps tokens accepted by the verification rule, and continues from the first rejection.",
+      "translation_ko": "목표 모델은 한 번의 처리에서 초안을 검증하고, 검증 규칙에 따라 수용된 토큰을 유지한 뒤 첫 거부 지점에서 생성을 이어갑니다.",
+      "use_ko": "초안의 일부만 채택되는 처리 흐름을 설명할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Preserve the target output distribution with exact speculative sampling",
+      "example_en": "With the exact acceptance rule, speculative sampling preserves the target distribution rather than guaranteeing the same sampled sentence on every run.",
+      "translation_ko": "정확한 수용 규칙을 적용하면 출력 확률분포가 보존되는 것이지, 매번 동일한 문장이 생성된다는 보장은 아닙니다.",
+      "use_ko": "동일한 출력분포와 동일한 개별 문장을 구별할 때",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Balance accepted-token gains against drafting and verification overhead",
+      "example_en": "We would test several draft lengths because extra accepted tokens may not offset the time spent drafting and verifying them.",
+      "translation_ko": "채택되는 토큰이 늘어도 초안 작성과 검증 시간이 이를 상쇄할 수 있으므로 초안 길이를 여러 가지로 실험하겠습니다.",
+      "use_ko": "성능 향상에 필요한 실제 조건과 비용을 논의할 때",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Distinguish a high token-acceptance rate from a real latency improvement",
+      "example_en": "A higher draft acceptance rate is useful, but we would compare end-to-end latency with standard decoding before calling the rollout faster.",
+      "translation_ko": "초안 채택률이 높아지는 것은 유용하지만, 더 빨라졌다고 보고하기 전에 일반 디코딩과 전체 지연시간을 비교하겠습니다.",
+      "use_ko": "11월 20일의 'Distinguish A from B' 구조 복습: 지표와 실제 결과를 구분할 때",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business_executive",
+      "example_en": "We would test draft-and-verify decoding for longer customer replies, but only recommend it if response time and operating cost improve under your actual traffic.",
+      "translation_ko": "긴 고객 응답에 초안·검증 디코딩을 시험하되 실제 서비스 트래픽에서 응답 시간과 운영비가 개선될 때만 권고하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical_team",
+      "example_en": "We would benchmark acceptance length, draft overhead, output-token latency, and GPU utilization against a baseline using the same target model and workload.",
+      "translation_ko": "동일한 목표 모델과 부하를 사용하는 기준 환경과 비교해 평균 채택 길이, 초안 생성 오버헤드, 출력 토큰 지연, GPU 사용률을 측정하겠습니다.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 물류회사는 사고 보고서 요약 에이전트가 길이가 서로 다른 보고서를 생성하도록 운영한다. 공급업체는 작은 초안 모델만 붙이면 항상 동일한 답변이 나오고 모든 요청이 빨라진다고 주장한다. 실제 트래픽, 초안 채택률 및 지연은 아직 측정하지 않았다.",
+    "question_en": "Our incident-report assistant produces both short and long summaries. A vendor says speculative decoding will always speed it up and produce exactly the same answer every time. What would you verify before deployment?",
+    "required_expression": "Draft multiple tokens with a lightweight model, then verify them in parallel with the target model",
+    "optional_expression_ids": [
+      "E4",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초로 핵심 표현과 E4 또는 E6 중 하나를 상황에 맞춰 변형해 사용한다. 초안/목표 모델의 역할, 같은 출력분포와 매번 같은 문장의 차이 또는 실제 지연시간 비교, 검증 전 단정할 수 없는 한계를 설명한다. 모범답안·사용자 응답은 공개 기록에 넣지 않는다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "NVIDIA Technical Blog",
+      "authors": [
+        "Tiyasa Mitra",
+        "Maximilian Golub",
+        "Maor Ashkenazi",
+        "Samkit Jain",
+        "Nidhi Bhatia",
+        "Bita Darvish Rouhani"
+      ],
+      "title": "Co-Designing AI Models Using Speculative Decoding for Faster LLM Inference",
+      "url": "https://developer.nvidia.com/blog/co-designing-ai-models-using-speculative-decoding-for-faster-llm-inference",
+      "type": "Official author-written engineering technical blog (not peer-reviewed); mechanism, draft length, acceptance length, drafting overhead",
+      "published": "2026-09-02",
+      "updated": null,
+      "accessed_on": "2026-11-23",
+      "supports": "Propose and verify candidate tokens, draft-length and acceptance-length trade-offs, benchmarking realistic workloads"
+    },
+    {
+      "id": "S2",
+      "organization": "Google Research",
+      "authors": [
+        "Yaniv Leviathan",
+        "Matan Kalman",
+        "Yossi Matias"
+      ],
+      "title": "Looking back at speculative decoding",
+      "url": "https://research.google/blog/looking-back-at-speculative-decoding/",
+      "type": "Official research explanation by the original algorithm authors (not itself a peer-reviewed paper)",
+      "published": "2024-12-06",
+      "updated": null,
+      "accessed_on": "2026-11-23",
+      "supports": "Speculative sampling, parallel verification, exact output distribution under correct acceptance rules; contrast with naive draft acceptance"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "Read the author-written main bodies (excluding NVIDIA's AI-generated summary) of NVIDIA Technical Blog (2026-09-02) and Google Research (2024-12-06) on 2026-11-23 Asia/Seoul. Verified draft-then-verify mechanism and exact output-distribution preservation for properly implemented speculative sampling. Did not inspect a PDF or generalize performance numbers. 04:15 preparation run; delivery pending.",
+  "review_of": [
+    "nsi-2026-11-20"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-23.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}

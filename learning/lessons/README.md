@@ -5,6 +5,7 @@
 한국 시간 날짜로 정리한 No smart intelligent 학습 자료입니다. 자료가 게시되었다는 사실은 학습자가 과제를 완료했다는 의미가 아닙니다.
 
 <!-- NSI:LESSONS:START -->
+| 2026-11-23 | Speculative decoding — draft-and-verify generation with exact output-distribution preservation | Draft multiple tokens with a lightweight model, then verify them in parallel with the target model | NVIDIA Technical Blog | [학습 카드](2026/11/2026-11-23.md) | [JSON](../records/2026/11/2026-11-23.json) |
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-22 | Out-of-distribution (OOD) generalization — Sunday review in new delivery regions | Evaluate generalization on unseen environments rather than relying only on random splits | Google Research | [학습 카드](2026/11/2026-11-22.md) | [JSON](../records/2026/11/2026-11-22.json) |
