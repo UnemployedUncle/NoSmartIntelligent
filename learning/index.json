@@ -3,8 +3,18 @@
   "managed_by": "no-smart-intelligent",
   "timezone": "Asia/Seoul",
   "archive_started_on": "2026-10-25",
-  "last_lesson_date": "2026-11-23",
+  "last_lesson_date": "2026-11-24",
   "lessons": [
+    {
+      "lesson_id": "nsi-2026-11-24",
+      "date": "2026-11-24",
+      "topic": "Selective prediction (abstention) — routing uncertain outputs for review",
+      "core_expression": "Abstain on low-confidence predictions and route them for review instead of forcing an answer",
+      "primary_source": "Google Research",
+      "markdown_path": "learning/lessons/2026/11/2026-11-24.md",
+      "record_path": "learning/records/2026/11/2026-11-24.json",
+      "source_verification": "verified"
+    },
     {
       "lesson_id": "nsi-2026-11-23",
       "date": "2026-11-23",
