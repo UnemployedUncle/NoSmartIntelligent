@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-25",
+  "date": "2026-11-25",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.25 (수) — Pass^k (Repeated-Trial Reliability)",
+  "topic": "Pass^k — measuring agent reliability across repeated trials",
+  "term": {
+    "en": "Pass^k (pass hat k)",
+    "abbreviation": null,
+    "ko": "k회 반복 전부 성공 확률(풀이)",
+    "definition_ko": "Pass^k는 같은 평가 과업을 독립적이고 동일한 분포에서 k회 수행했을 때 모든 시도가 성공할 확률을 과업별로 구한 뒤 평균하는 평가 지표입니다. 각 시도는 사전에 정의한 성공 기준으로 판정하며, 한 번이라도 실패하면 해당 k회 묶음은 전부 성공으로 계산하지 않습니다.",
+    "distinction_ko": "pass@k는 k회 중 최소 한 번 성공할 확률이고, pass^k는 k회 모두 성공할 확률입니다. 둘은 k=1에서 같지만 반복할수록 서로 다른 질문에 답합니다. 높은 pass^k도 평가 기준 밖의 오류나 실제 운영 안전성을 보장하지 않습니다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Measure whether the agent succeeds on every trial, not just once",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Measure whether the agent succeeds on every trial, not just once",
+      "example_en": "Pass^k measures whether an agent succeeds on every trial in a set of repeated attempts, averaged across evaluation tasks.",
+      "translation_ko": "Pass^k는 반복 시도 묶음에서 매번 성공하는지를 평가 과업별로 평균해 측정합니다.",
+      "use_ko": "단 한 번의 데모보다 반복 수행의 신뢰성을 정의할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Repeat each task from the same initial state",
+      "example_en": "We would rerun each contract-validation task from a clean copy of the same document and database state.",
+      "translation_ko": "동일 문서와 데이터베이스의 초기 상태를 복원해 각 계약 검증 과업을 다시 실행하겠습니다.",
+      "use_ko": "반복 평가의 독립성을 확보하는 설계를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Apply the same success criteria across trials",
+      "example_en": "Every trial would have to identify the required clauses and flag missing approvals under the same grading rules.",
+      "translation_ko": "모든 시도에서 동일한 채점 규칙에 따라 필수 조항을 식별하고 누락된 승인을 표시해야 합니다.",
+      "use_ko": "일관된 업무 성공 판정 기준을 제안할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Report the share of tasks that pass all k trials",
+      "example_en": "With five trials per contract, we would report the share of contracts that pass all five checks.",
+      "translation_ko": "계약별로 다섯 번 실행하고 다섯 번 모두 통과한 계약의 비율을 보고하겠습니다.",
+      "use_ko": "과업마다 정확히 k번 실행한 경우의 경험적 지표를 설명할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Distinguish occasional success from consistent performance",
+      "example_en": "A contract agent that passes once in five attempts demonstrates a capability, but not consistent performance across those attempts.",
+      "translation_ko": "다섯 번 중 한 번 통과한 계약 에이전트는 수행 가능성을 보여주지만 그 시도들에서 일관된 성능을 보인 것은 아닙니다.",
+      "use_ko": "pass@k와 pass^k의 비즈니스 의미를 구별할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Escalate abstained cases to an authorized reviewer",
+      "example_en": "For cases that require escalation, we would count a trial as successful only if the agent routes the unresolved contract to an authorized reviewer as specified.",
+      "translation_ko": "상신이 필요한 사례에서는 에이전트가 미해결 계약을 규정에 따라 권한 있는 검토자에게 보낸 경우에만 해당 시도를 성공으로 인정하겠습니다.",
+      "use_ko": "어제 제공한 표현을 복습하며 검토 요청도 성공 기준에 포함할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "business executives / non-technical users",
+      "example_en": "One successful demo tells us the contract assistant can complete the task; repeated tests tell us how consistently it does so under the tested conditions.",
+      "translation_ko": "한 번의 성공적인 시연은 계약 검토를 수행할 수 있음을 보여주고, 반복 테스트는 시험 조건에서 얼마나 일관되게 수행하는지 알려줍니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "technical teams",
+      "example_en": "We would reset the environment for each trial, hold the grading rules fixed, and report pass^1 and pass^5 across the same task set.",
+      "translation_ko": "시도마다 환경을 초기화하고 채점 규칙을 고정한 뒤 동일 과업 집합에서 pass^1과 pass^5를 보고하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 물류센터에서 재고 조정 에이전트를 도입합니다. 시연에서는 재고 불일치를 한 번 성공적으로 해결했지만, 조정 권한을 넘는 건은 담당자 검토로 보내야 합니다. 반복 평가 결과는 아직 없습니다.",
+    "question_en": "Our inventory-adjustment agent handled a stock discrepancy correctly in one demo. Some discrepancies require supervisor approval. How would you test whether the agent performs reliably across repeated attempts before deployment?",
+    "required_expression": "Measure whether the agent succeeds on every trial, not just once",
+    "optional_expression_ids": [
+      "E2",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현과 E2 또는 E6 중 하나를 자연스럽게 변형해 사용하세요. 같은 과업의 독립적 반복, 재고 상태와 필수 승인·검토 경로를 포함한 성공 기준, 전부 성공하는 과업의 비율을 설명하세요. 아직 측정하지 않은 신뢰성을 보장하지 마세요. E6는 11월 24일에 제공한 표현의 복습이며 숙달을 의미하지 않습니다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Anthropic Engineering",
+      "authors": [
+        "Anthropic Engineering team"
+      ],
+      "title": "Demystifying evals for AI agents",
+      "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+      "type": "official engineering article",
+      "published": "2026-01-09",
+      "updated": null,
+      "accessed_on": "2026-11-25",
+      "supports": "반복 평가, pass@k와 pass^k의 구별, 실행 환경 격리 및 평가 기준 설계"
+    },
+    {
+      "id": "S2",
+      "organization": "Sierra",
+      "authors": [
+        "Shunyu Yao",
+        "Noah Shinn",
+        "Pedram Razavi",
+        "Karthik Narasimhan"
+      ],
+      "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "url": "https://arxiv.org/html/2406.12045v1",
+      "type": "research preprint (arXiv v1)",
+      "published": "2024-06-17",
+      "updated": null,
+      "accessed_on": "2026-11-25",
+      "supports": "3절의 pass^k 정의, 독립·동일분포 반복 조건, 과업별 평균 및 평가 기준의 한계"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "2026-11-25 S1 공식 HTML의 non-determinism 및 trial isolation 부분과 S2 arXiv v1 HTML의 3절 metric 정의·보상 기준을 직접 확인. S2는 읽은 판본을 preprint로 표기하며 연구 성능 수치는 인용하지 않음. 예시 수치는 가상 관측값. 수정일 미확인.",
+  "review_of": [
+    "nsi-2026-11-24"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-25.md",
+  "preparation_status": "ready",
+  "delivery_status": "pending"
+}
