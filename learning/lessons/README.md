@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-26 | Semantic caching — reusing responses for equivalent requests without sacrificing correctness | Reuse cached responses for semantically equivalent requests instead of regenerating them | AWS Database Blog | [학습 카드](2026/11/2026-11-26.md) | [JSON](../records/2026/11/2026-11-26.json) |
 | 2026-11-25 | Pass^k — measuring agent reliability across repeated trials | Measure whether the agent succeeds on every trial, not just once | Anthropic Engineering | [학습 카드](2026/11/2026-11-25.md) | [JSON](../records/2026/11/2026-11-25.json) |
 | 2026-11-24 | Selective prediction (abstention) — routing uncertain outputs for review | Abstain on low-confidence predictions and route them for review instead of forcing an answer | Google Research | [학습 카드](2026/11/2026-11-24.md) | [JSON](../records/2026/11/2026-11-24.json) |
 | 2026-11-23 | Speculative decoding — draft-and-verify generation with exact output-distribution preservation | Draft multiple tokens with a lightweight model, then verify them in parallel with the target model | NVIDIA Technical Blog | [학습 카드](2026/11/2026-11-23.md) | [JSON](../records/2026/11/2026-11-23.json) |
