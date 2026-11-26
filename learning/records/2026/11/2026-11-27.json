@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-27",
+  "date": "2026-11-27",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.27 (금) — Conditional Average Treatment Effect (CATE)",
+  "topic": "Conditional average treatment effect (CATE) — estimating incremental impact by segment",
+  "term": {
+    "en": "Conditional Average Treatment Effect",
+    "abbreviation": "CATE",
+    "ko": "조건부 평균 처치 효과(풀이)",
+    "definition_ko": "CATE는 사전에 관측한 특성 X가 같은 집단에서 특정 개입을 했을 때와 하지 않았을 때의 잠재결과 차이의 조건부 기댓값이다. 개입과 결과 및 대상 집단을 명확히 정의하는 인과적 추정 대상이며, 무작위 배정 실험이나 적절한 인과 식별 가정 아래 추정한다.",
+    "distinction_ko": "높은 결과 예측 확률과 큰 개입 효과는 다르다. 개입하지 않아도 구매할 가능성이 큰 고객에게는 추가 안내의 효과가 작을 수 있으며, 집단 평균 효과는 개별 고객의 실제 반응을 보장하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Estimate the incremental effect of an intervention for a given segment",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Estimate the incremental effect of an intervention for a given segment",
+      "example_en": "CATE estimates how much an intervention changes the expected outcome for a group with specified characteristics.",
+      "translation_ko": "CATE는 특정 특성을 가진 집단에서 개입이 기대 결과를 얼마나 바꾸는지를 추정합니다.",
+      "use_ko": "개념의 정의와 추정 대상을 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Compare expected outcomes with and without the intervention",
+      "example_en": "We would compare expected onboarding completion rates with and without an additional support call for the same customer segment.",
+      "translation_ko": "동일한 고객군에서 추가 지원 통화가 있을 때와 없을 때의 기대 온보딩 완료율을 비교하겠습니다.",
+      "use_ko": "개입의 기준 상태를 명시할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Identify which segments benefit most from the intervention",
+      "example_en": "We would identify which customer segments gain the most from additional onboarding support rather than allocate calls uniformly.",
+      "translation_ko": "모든 고객에게 통화를 균등 배분하지 않고 추가 온보딩 지원의 효과가 가장 큰 고객군을 파악하겠습니다.",
+      "use_ko": "제한된 지원 인력을 배분할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Randomly assign eligible units to treatment and control groups",
+      "example_en": "Within predefined customer segments, we would randomly assign eligible accounts to receive or not receive an additional support call.",
+      "translation_ko": "사전에 정한 고객군에서 적격 계정을 추가 지원 통화 제공군과 미제공군으로 무작위 배정하겠습니다.",
+      "use_ko": "개입 효과를 식별하기 위한 실험을 설계할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Account for confounding and report uncertainty around effect estimates",
+      "example_en": "If we use historical records, we would adjust for measured pre-intervention confounders, check overlap, and report uncertainty around the estimated effects.",
+      "translation_ko": "과거 기록을 사용한다면 측정된 개입 전 교란요인을 조정하고 비교 가능한 데이터가 있는지 확인하며 추정 효과의 불확실성을 보고하겠습니다.",
+      "use_ko": "관측 자료로 추정할 때의 조건과 한계를 설명할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Distinguish a high predicted outcome from a large treatment effect",
+      "example_en": "A customer who is likely to complete onboarding anyway may gain little from an extra support call.",
+      "translation_ko": "어차피 온보딩을 완료할 가능성이 높은 고객에게는 추가 지원 통화의 효과가 작을 수 있습니다.",
+      "use_ko": "결과 예측과 개입 효과를 구분할 때. 11월 26일의 Distinguish A from B 표현 복습.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "Business executives / non-technical staff",
+      "example_en": "We would prioritize support calls for customer groups expected to gain the most from the calls and validate the targeting policy in a new experiment.",
+      "translation_ko": "지원 통화의 추가 효과가 가장 클 것으로 예상되는 고객군을 우선 지원하고 새로운 실험으로 대상 선정 정책을 검증하겠습니다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "audience": "Technical teams",
+      "example_en": "We would estimate CATE using pre-treatment features, check treatment overlap in observational data, and validate the proposed allocation rule on independent randomized data.",
+      "translation_ko": "개입 전 특성으로 CATE를 추정하고 관측 자료에서 개입군과 비교군의 중첩을 점검하며 독립적인 무작위 실험 데이터로 배분 규칙을 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 제조기업에서 고장 위험 예측 모델을 사용하고 있다. 예방 점검 인력이 제한되어 있어 고장 위험이 높은 설비를 우선 점검하자는 의견이 있지만, 점검 자체가 고장을 얼마나 줄이는지는 아직 평가하지 않았다.",
+    "question_en": "Our failure-risk model ranks machines by their likelihood of breaking down. We have limited maintenance capacity. Should we simply inspect the highest-risk machines, or how would you identify where preventive inspections make the biggest difference?",
+    "required_expression": "Estimate the incremental effect of an intervention for a given segment",
+    "optional_expression_ids": [
+      "E4",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 표현과 E4 또는 E6 중 하나를 상황에 맞게 변형한다. 고장 위험과 점검의 추가 효과를 구분하고, 점검 전 특성에 따른 집단별 효과와 안전하게 설계된 비교 평가 방법 또는 인과 추정의 한계를 설명한다. 필수 안전 점검을 생략하지 않는다. E6은 11월 26일에 제공한 표현의 복습이다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Uber Engineering",
+      "authors": [
+        "Totte Harinen",
+        "Bonnie Li"
+      ],
+      "title": "Using Causal Inference to Improve the Uber User Experience",
+      "url": "https://www.uber.com/us/en/blog/causal-inference-at-uber/",
+      "type": "공식 기술 해설",
+      "published": "2019-06-19",
+      "updated": null,
+      "accessed_on": "2026-11-27",
+      "supports": "실험 데이터의 세그먼트별 효과 추정, 후속 무작위 실험 검증, 관측 데이터의 교란 한계(When treatment effect varies across segments 및 Causal inference with observational data)."
+    },
+    {
+      "id": "S2",
+      "organization": "Microsoft Research ALICE / PyWhy EconML",
+      "authors": [],
+      "title": "Doubly Robust Learning",
+      "url": "https://www.pywhy.org/EconML/spec/estimation/dr.html",
+      "type": "공식 방법론·구현 문서(econml 0.16.0)",
+      "published": null,
+      "updated": null,
+      "accessed_on": "2026-11-27",
+      "supports": "잠재결과 기반 CATE 수식, 비교 대상 정의, 조건부 비교 가능성, 낮은 overlap에서의 추정 불확실성 및 신뢰구간(Overview of Formal Methodology)."
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "S1의 세그먼트별 효과 추정 및 관측 데이터 절, S2의 공식 방법론 HTML 본문을 직접 확인했다. S2 문서 버전은 0.16.0이며 개인 저자와 게시·수정일은 미확인. 두 자료는 동료심사 논문이 아닌 공식 기술·방법론 설명이며 연구 성능 수치를 인용하지 않았다. 11월 26일의 기존 표현만 복습하며 사용자 숙달을 기록하지 않는다.",
+  "review_of": [
+    "nsi-2026-11-26"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-27.md"
+}
