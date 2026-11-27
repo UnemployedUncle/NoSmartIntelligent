@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "managed_by": "no-smart-intelligent",
+  "lesson_id": "nsi-2026-11-28",
+  "date": "2026-11-28",
+  "timezone": "Asia/Seoul",
+  "title": "No Smart Intelligent | 2026.11.28 (토) — Position Bias in LLM-as-a-Judge",
+  "topic": "Position bias in LLM-as-a-judge — evaluating answers independently of presentation order",
+  "term": {
+    "en": "Position bias in LLM-as-a-judge",
+    "abbreviation": null,
+    "ko": "LLM 평가자의 위치 편향(풀이)",
+    "definition_ko": "두 답변을 비교하는 LLM 평가자가 답변의 실제 품질과 무관하게 프롬프트에서 특정 위치에 있는 답변을 체계적으로 선호하는 경향입니다. 같은 답변 쌍의 순서만 바꾸어 비교하고, 동일 입력 반복 평가로 무작위 변동과 구별할 수 있습니다.",
+    "distinction_ko": "순서 일관성은 정확성과 다릅니다. 순서를 바꾸어도 같은 답변을 선택하는 평가자가 사람의 기준에서 더 나쁜 답변을 고를 수 있으므로 전문가 라벨로 별도 검증해야 합니다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "core_expression": "Test whether the judge favors a response because of its position rather than its quality",
+  "expressions": [
+    {
+      "id": "E1",
+      "role": "core",
+      "pattern_en": "Test whether the judge favors a response because of its position rather than its quality",
+      "example_en": "Position bias occurs when an LLM judge favors a response because of where it appears in the prompt rather than how well it meets the evaluation criteria.",
+      "translation_ko": "위치 편향은 LLM 평가자가 평가 기준 충족 정도보다 프롬프트에서 답변이 놓인 위치 때문에 특정 답변을 선호할 때 발생합니다.",
+      "use_ko": "자동 평가의 편향을 정의할 때.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E2",
+      "role": "extension",
+      "pattern_en": "Swap the presentation order while keeping the responses unchanged",
+      "example_en": "We would show the same two supplier-summary responses in both orders without changing their content.",
+      "translation_ko": "동일한 공급업체 요약 답변 두 개의 내용을 변경하지 않고 두 가지 순서로 제시하겠습니다.",
+      "use_ko": "순서의 영향을 확인하는 실험을 설계할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E3",
+      "role": "extension",
+      "pattern_en": "Apply the same success criteria across trials",
+      "example_en": "We would apply the same success criteria across trials, including whether each summary retains the required facts from the source documents.",
+      "translation_ko": "각 요약에 원문 필수 사실이 유지되었는지를 포함해 모든 시도에 동일한 성공 기준을 적용하겠습니다.",
+      "use_ko": "평가 기준을 고정할 때. 11월 25일에 제공한 표현의 복습.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "E4",
+      "role": "extension",
+      "pattern_en": "Map each verdict back to the original response identity",
+      "example_en": "We would map each verdict back to the original response identity before checking whether the preferred summary has changed.",
+      "translation_ko": "선호 요약이 바뀌었는지 확인하기 전에 각 판정을 원래 답변의 식별자에 대응시키겠습니다.",
+      "use_ko": "첫 번째/두 번째 위치와 실제 답변을 혼동하지 않도록 할 때.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E5",
+      "role": "extension",
+      "pattern_en": "Flag order-sensitive judgments for human review",
+      "example_en": "If the preferred supplier summary changes when the order is reversed, we would flag that comparison for human review.",
+      "translation_ko": "순서를 바꿨을 때 선호하는 공급업체 요약이 달라지면 해당 비교를 사람의 검토 대상으로 표시하겠습니다.",
+      "use_ko": "상충하는 평가 결과의 처리 정책을 제안할 때.",
+      "source_ids": [
+        "S2",
+        "S1"
+      ]
+    },
+    {
+      "id": "E6",
+      "role": "extension",
+      "pattern_en": "Validate judge agreement against expert-labeled examples",
+      "example_en": "We would compare the judge's preferences with expert labels before using its scores to select a production model.",
+      "translation_ko": "운영 모델을 선정하는 데 평가 점수를 사용하기 전에 전문가 라벨과 평가자의 선호 결과를 비교하겠습니다.",
+      "use_ko": "자동 평가 결과를 신뢰할 수 있는지 검증할 때.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "audience_examples": [
+    {
+      "audience": "Business executives",
+      "example_en": "We would check that the evaluator chooses the better supplier summary even when the two answers change places, and confirm its decisions with expert reviewers.",
+      "translation_ko": "두 답변의 위치가 바뀌어도 평가자가 더 좋은 공급업체 요약을 선택하는지 확인하고 전문가 검토로 판정을 검증하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "audience": "Technical teams",
+      "example_en": "We would run blinded pairwise comparisons in both orders, repeat identical prompts to estimate variability, and measure order consistency and agreement with expert labels.",
+      "translation_ko": "모델의 신원을 숨긴 쌍대 비교를 두 순서로 실시하고 동일 프롬프트를 반복해 변동성을 추정하며 순서 일관성과 전문가 라벨 일치율을 측정하겠습니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "exercise": {
+    "scenario_ko": "가상의 금융회사가 두 AI 모델의 내부 비용 보고서 요약 품질을 비교합니다. 자동 평가에서 모델 A의 답변을 항상 첫 번째에 배치했으며 사람이 검토한 비교 자료도 아직 충분하지 않습니다.",
+    "question_en": "Our automated judge always sees Model A's expense-report summary first and usually selects it as the winner. How would you determine whether Model A is genuinely better or simply benefits from its position?",
+    "required_expression": "Test whether the judge favors a response because of its position rather than its quality",
+    "optional_expression_ids": [
+      "E3",
+      "E6"
+    ],
+    "answer_guide_ko": "영어 3~5문장, 약 40~70단어 또는 30~45초. 핵심 E1과 E3 또는 E6 중 하나를 자연스럽게 변형해 사용하세요. 위치 편향의 의미, 답변 내용은 유지하면서 순서를 바꾸는 비교 방법, 그리고 순서 일관성만으로 품질 우위를 확정할 수 없는 이유를 포함하세요. E3은 11월 25일에 제공한 표현의 복습입니다."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "OpenAI",
+      "authors": [],
+      "title": "Evaluation best practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+      "type": "공식 평가 설계 가이드",
+      "published": null,
+      "updated": null,
+      "accessed_on": "2026-11-28",
+      "supports": "쌍대 비교 평가, 응답 순서 편향의 위험, 명확한 평가 기준 및 사람의 평가와 일치 여부 검증"
+    },
+    {
+      "id": "S2",
+      "organization": "Dartmouth College",
+      "authors": [
+        "Lin Shi",
+        "Chiyu Ma",
+        "Wenhua Liang",
+        "Xingjian Diao",
+        "Weicheng Ma",
+        "Soroush Vosoughi"
+      ],
+      "title": "Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge",
+      "url": "https://arxiv.org/html/2406.07791v9",
+      "type": "연구 preprint v9 (IJCNLP-AACL 2025 학회 게재 서지 별도 확인)",
+      "published": "2025-11-11",
+      "updated": null,
+      "accessed_on": "2026-11-28",
+      "supports": "2.1–2.2절의 순서 교환 설계, 위치 일관성, 동일 입력 반복 안정성 및 4절의 과업별 차이"
+    }
+  ],
+  "source_verification": "verified",
+  "verification_notes": "OpenAI 가이드의 LLM-as-a-judge and model graders 본문과 Dartmouth 연구 preprint v9의 2.1–2.2절 및 4절을 HTML로 열어 확인했습니다. v9의 표시 날짜는 2025-11-11이며, ACL Anthology(https://aclanthology.org/2025.ijcnlp-long.18/)에서 2025년 12월 학회 게재 서지를 확인했습니다. OpenAI 가이드의 게시일과 수정일 및 preprint의 별도 수정일은 미확인입니다. 학회 최종 PDF는 분석하지 않았고 특정 연구 수치는 인용하지 않았습니다. 사례, 평가 정책 및 예문은 설명용 가상 설계입니다.",
+  "review_of": [
+    "nsi-2026-11-25"
+  ],
+  "lesson_path": "learning/lessons/2026/11/2026-11-28.md"
+}

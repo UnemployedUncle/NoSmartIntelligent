@@ -7,6 +7,7 @@
 <!-- NSI:LESSONS:START -->
 | 날짜 | 용어·주제 | 핵심 표현 | 주 출처 | 본문 | JSON |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-28 | Position bias in LLM-as-a-judge — evaluating answers independently of presentation order | Test whether the judge favors a response because of its position rather than its quality | OpenAI | [학습 카드](2026/11/2026-11-28.md) | [JSON](../records/2026/11/2026-11-28.json) |
 | 2026-11-27 | Conditional average treatment effect (CATE) — estimating incremental impact by segment | Estimate the incremental effect of an intervention for a given segment | Uber Engineering | [학습 카드](2026/11/2026-11-27.md) | [JSON](../records/2026/11/2026-11-27.json) |
 | 2026-11-26 | Semantic caching — reusing responses for equivalent requests without sacrificing correctness | Reuse cached responses for semantically equivalent requests instead of regenerating them | AWS Database Blog | [학습 카드](2026/11/2026-11-26.md) | [JSON](../records/2026/11/2026-11-26.json) |
 | 2026-11-25 | Pass^k — measuring agent reliability across repeated trials | Measure whether the agent succeeds on every trial, not just once | Anthropic Engineering | [학습 카드](2026/11/2026-11-25.md) | [JSON](../records/2026/11/2026-11-25.json) |
